@@ -50,7 +50,7 @@ const main = async () => {
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
                 userId INT UNSIGNED NOT NULL,
                 FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
-                type ENUM('lluvia', 'tormenta', 'inundación', 'nieve', 'granizo', 'hielo', 'deslizamiento', 'terremoto', 'viento', 'polen', 'radiación', 'frío extremo', 'calor extremo') NOT NULL,
+                type ENUM('lluvia', 'tormenta', 'inundación', 'nieve', 'granizo', 'hielo', 'deslizamiento', 'terremoto', 'viento', 'polen', 'radiación', 'incendio', 'niebla', 'oleaje', 'frío extremo', 'calor extremo') NOT NULL,
                 threshold DECIMAL(5, 2),
                 active BOOLEAN DEFAULT TRUE,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP, 
