@@ -3,19 +3,19 @@ import {
     selectUserByEmailModel,
     selectUserByUsernameModel,
 } from '../../models/users/index.js';
-import { generateErrorUtil } from '../../utils/index.js';
+
+import { userSchema } from '../../schemas/users/index.js';
+import { generateErrorUtil, validateSchema } from '../../utils/index.js';
 
 // ------------------------------------------
 // Función controladora para añadir un usuario
 const addUserController = async (req, res, next) => {
     try {
         // NOTA: La validación de datos va antes de extraerlos del body para asegurar que todos los requeridos estén presentes y en el formato correcto *antes de* procesarlos en el código. Si no se usa un esquema de validación, habría que hacer comprobaciones adicionales después, como `if (!username || !email || !password) generateErrorUtil('Faltan campos', 400);`, lo cual es menos eficiente y más propenso a errores repetitivos
-        // @@@ await validateSchema(userSchema, req.body);
+        await validateSchema(userSchema, req.body);
 
         // REQ: Representa la solicitud del cliente y contiene información sobre la petición. Aquí obtenemos los datos necesarios del body una vez validados
         const { username, email, password } = req.body;
-
-        // @@@
 
         // Comprobaciones de los datos recibidos antes de insertar al usuario
         const usernameAlreadyExists = await selectUserByUsernameModel(username);
@@ -36,6 +36,8 @@ const addUserController = async (req, res, next) => {
             message: 'Usuario registrado',
         });
     } catch (err) {
+        console.log(err.details);
+
         // NEXT: Función que permite pasar el control al siguiente middleware en la pila de ejecución
         next(err);
     }
