@@ -12,7 +12,7 @@ import {
     locationsRoutes,
     preferencesRoutes,
     usersRoutes,
-} from './src/routes';
+} from './src/routes/index.js';
 
 // Importamos las variables de entorno necesarias
 const { PORT } = process.env;

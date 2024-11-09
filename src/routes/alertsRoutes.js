@@ -1,7 +1,7 @@
 // routes/alertsRoutes.js
 import express from 'express';
 import {
-    createAlertController,
+    addAlertController,
     getAlertController,
     updateAlertController,
     deleteAlertController,
@@ -12,7 +12,7 @@ import {
 const router = express.Router();
 
 // Ruta para generar una nueva alerta meteorológica
-router.post('/new', createAlertController);
+router.post('/new', addAlertController);
 
 // Ruta para obtener los detalles de una alerta meteorológica específica
 router.get('/:alertId', getAlertController);
