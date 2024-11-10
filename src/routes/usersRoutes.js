@@ -7,7 +7,11 @@ import {
     updateUserController,
     deleteUserController,
 } from '../controllers/users/index.js';
-// import authMiddleware from '../middleware/authMiddleware.js';
+
+import {
+    authAdminMiddleware,
+    authUserMiddleware,
+} from '../middlewares/index.js';
 
 // ------------------------------------------
 
@@ -20,12 +24,12 @@ router.post('/register', addUserController);
 router.post('/login', loginUserController);
 
 // Ruta para obtener los datos de un usuario
-router.get('/:userId', /* authMiddleware, */ getUserController);
+router.get('/:userId', authUserMiddleware, getUserController);
 
 // Ruta para actualizar los datos de un usuario
-router.put('/:userId/update', /* authMiddleware, */ updateUserController);
+router.put('/:userId/update', authUserMiddleware, updateUserController);
 
 // Ruta para eliminar los datos de un usuario
-router.delete('/:userId/delete', /* authMiddleware, */ deleteUserController);
+router.delete('/:userId/delete', authAdminMiddleware, deleteUserController);
 
 export default router;

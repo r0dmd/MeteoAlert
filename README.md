@@ -4,7 +4,7 @@
 -   **POST** ✅ - ["/api/users/login"] - Inicia sesión con un usuario existente. No requiere autenticación.
 -   **GET** - ["/api/users/:userId"] - Obtiene los datos de un usuario. Requiere autenticación.
 -   **PUT** - ["/api/users/:userId/update"] - Actualiza los datos de un usuario. Requiere autenticación.
--   **DELETE** - ["/api/users/:userId/delete"] - Elimina los datos de un usuario. Requiere autenticación.
+-   **DELETE** - ["/api/users/:userId/delete"] - Elimina los datos de un usuario. Requiere autenticación de administrador.
 
 ## Endpoints de ubicaciones
 
