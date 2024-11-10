@@ -4,8 +4,8 @@ import {
     selectUserByUsernameModel,
 } from '../../models/users/index.js';
 
-import { userSchema } from '../../schemas/users/index.js';
 import { generateErrorUtil, validateSchema } from '../../utils/index.js';
+import { userSchema } from '../../schemas/users/index.js';
 
 // ------------------------------------------
 // Función controladora para añadir un usuario

@@ -1,3 +1,4 @@
+import loginUserSchema from './loginUserSchema.js';
 import userSchema from './userSchema.js';
 
-export { userSchema };
+export { loginUserSchema, userSchema };
