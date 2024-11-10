@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 
 import { selectUserByEmailModel } from '../../models/users/index.js';
 
-import { generateErrorUtil, validateSchema } from '../../utils/index.js';
+import { generateErrorUtil, validateSchemaUtil } from '../../utils/index.js';
 import { loginUserSchema } from '../../schemas/users/index.js';
 
 const { SECRET, TOKEN_EXPIRATION } = process.env; // Variables de entorno
@@ -13,7 +13,7 @@ const { SECRET, TOKEN_EXPIRATION } = process.env; // Variables de entorno
 const loginUserController = async (req, res, next) => {
     try {
         // Validamos y obtenemos datos del body
-        await validateSchema(loginUserSchema, req.body);
+        await validateSchemaUtil(loginUserSchema, req.body);
         const { email, password } = req.body;
 
         // Seleccionamos los datos del usuario de la BD

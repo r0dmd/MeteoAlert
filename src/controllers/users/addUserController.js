@@ -4,7 +4,7 @@ import {
     selectUserByUsernameModel,
 } from '../../models/users/index.js';
 
-import { generateErrorUtil, validateSchema } from '../../utils/index.js';
+import { generateErrorUtil, validateSchemaUtil } from '../../utils/index.js';
 import { userSchema } from '../../schemas/users/index.js';
 
 // ------------------------------------------
@@ -12,7 +12,7 @@ import { userSchema } from '../../schemas/users/index.js';
 const addUserController = async (req, res, next) => {
     try {
         // NOTA: La validación de datos va antes de extraerlos del body para asegurar que todos los requeridos estén presentes y en el formato correcto *antes de* procesarlos en el código. Si no se usa un esquema de validación, habría que hacer comprobaciones adicionales después, como `if (!username || !email || !password) generateErrorUtil('Faltan campos', 400);`, lo cual es menos eficiente y más propenso a errores repetitivos
-        await validateSchema(userSchema, req.body);
+        await validateSchemaUtil(userSchema, req.body);
 
         // REQ: Representa la solicitud del cliente y contiene información sobre la petición. Aquí obtenemos los datos necesarios del body una vez validados
         const { username, email, password } = req.body;

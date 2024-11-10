@@ -9,14 +9,14 @@ import {
     generateErrorUtil,
     removeAvatarUtil,
     saveAvatarUtil,
-    validateSchema,
+    validateSchemaUtil,
 } from '../../utils/index.js';
 
 // ------------------------------------------
 // Función que actualiza los datos de usuario
 const updateUserController = async (req, res, next) => {
     try {
-        await validateSchema(updateUserSchema, req.body);
+        await validateSchemaUtil(updateUserSchema, req.body);
 
         if (Object.keys(req.body).length === 0 && !req.files)
             generateErrorUtil(
