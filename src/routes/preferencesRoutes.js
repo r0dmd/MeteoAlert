@@ -17,7 +17,7 @@ const router = express.Router();
 router.post('/new', authUserMiddleware, addPreferenceController);
 
 // Ruta para obtener las preferencias de alertas de un usuario
-router.get('/:userId', authUserMiddleware, getPreferencesController);
+router.get('/', authUserMiddleware, getPreferencesController);
 
 // Ruta para actualizar las preferencias de alerta de un usuario
 router.put('/:preferenceId', authUserMiddleware, updatePreferenceController);

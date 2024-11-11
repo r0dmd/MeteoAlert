@@ -1,3 +1,5 @@
+// NOTA: Es buena práctica no incluir en la URL información que ya viene contenida en el token, salvo que haya alguna razón especial para hacerlo. Así pues, evitamos poner ':userId' como path param en las rutas que requieren autentificación y por tanto disponen del token y su información
+
 // routes/usersRoutes.js
 import express from 'express';
 import {
@@ -5,6 +7,7 @@ import {
     loginUserController,
     getUserController,
     updateUserController,
+    getAllUsersController,
     deleteUserController,
 } from '../controllers/users/index.js';
 
@@ -24,10 +27,13 @@ router.post('/register', addUserController);
 router.post('/login', loginUserController);
 
 // Ruta para obtener los datos de un usuario
-router.get('/:userId', authUserMiddleware, getUserController);
+router.get('/profile', authUserMiddleware, getUserController);
 
 // Ruta para actualizar los datos de un usuario
-router.put('/:userId/update', authUserMiddleware, updateUserController);
+router.put('/profile/update', authUserMiddleware, updateUserController);
+
+// Ruta para obtener todos los usuarios
+router.get('/', authAdminMiddleware, getAllUsersController);
 
 // Ruta para eliminar los datos de un usuario
 router.delete('/:userId/delete', authAdminMiddleware, deleteUserController);
