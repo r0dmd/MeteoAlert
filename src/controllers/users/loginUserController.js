@@ -1,7 +1,10 @@
 import jwt from 'jsonwebtoken'; // JSON web token
 import bcrypt from 'bcrypt';
 
-import { selectUserByEmailModel } from '../../models/users/index.js';
+import {
+    selectUserByEmailModel,
+    updateLastAuthUpdateModel,
+} from '../../models/users/index.js';
 
 import { generateErrorUtil, validateSchemaUtil } from '../../utils/index.js';
 import { loginUserSchema } from '../../schemas/users/index.js';
@@ -39,6 +42,9 @@ const loginUserController = async (req, res, next) => {
         const token = jwt.sign(tokenInfo, SECRET, {
             expiresIn: TOKEN_EXPIRATION,
         });
+
+        // Al ser un controlador de autentificación, antes de concluir necesitamos indicar la fecha de actualzación en la BD
+        await updateLastAuthUpdateModel(user.id);
 
         res.send({
             status: 'ok',

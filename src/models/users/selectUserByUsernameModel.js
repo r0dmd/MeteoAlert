@@ -4,6 +4,7 @@ import getPool from '../../db/getPool.js';
 // ------------------------------------------
 // Función que realiza una consulta a la BD para seleccionar un usuario con un nombre de usuario dado
 const selectUserByUsernameModel = async (username) => {
+    // NOTA sobre `try-catch` en modelos: No es obligatorio si el manejo de errores se gestiona en una capa superior, como en los controladores o en un middleware de errores global. Esto permite que el modelo solo se enfoque en la consulta a la base de datos. Sin embargo, incluir `try-catch` puede ser útil para capturar errores específicos de la base de datos (conexión, sintaxis SQL, etc.) y lanzar mensajes personalizados si se desea.
     const pool = await getPool();
 
     // Comprobamos si hay algún usuario con el nombre de usuario proporcionado

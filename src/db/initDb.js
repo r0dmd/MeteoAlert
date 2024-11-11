@@ -25,7 +25,8 @@ const main = async () => {
                 avatar VARCHAR(100),
                 role ENUM('admin', 'normal') DEFAULT 'normal',
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-                modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
+                modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP,
+                lastAuthUpdate DATETIME
             )
         `);
 
