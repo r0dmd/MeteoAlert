@@ -2,7 +2,7 @@ import getPool from '../../db/getPool.js';
 import { generateErrorUtil } from '../../utils/index.js';
 
 // ------------------------------------------
-// Función para actualizar la fecha de última autenticación de un usuario en la BD, a usar en controladores donde se necesite actualizar la fecha de autenticación, como después de un inicio de sesión o un cambio de contraseña
+// Función para actualizar la fecha de última autenticación de un usuario en la BD, a usar en controladores donde se necesite actualizar la fecha de autentificación, como después de un inicio de sesión o @@@ un cambio de contraseña
 const updateLastAuthUpdateModel = async (userId) => {
     const pool = await getPool();
 

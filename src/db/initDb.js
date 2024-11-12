@@ -7,8 +7,9 @@ const main = async () => {
     try {
         const pool = await getPool();
 
-        // Borramos tablas en orden inverso para evitar problemas de FK
+        // Borramos tablas en orden inverso para evitar problemas de FK (Foreign Keys)
         console.log('Borrando tablas...');
+
         await pool.query(
             'DROP TABLE IF EXISTS alerts, preferences, locations, users',
         );
