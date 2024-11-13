@@ -12,8 +12,6 @@ import {
     validateSchemaUtil,
 } from '../../utils/index.js';
 
-// @@@ Falta el cambio de contraseña, y dentro de eso el updateLastAuthUpdateModel
-
 // ------------------------------------------
 // Función que actualiza los datos de usuario
 const updateUserController = async (req, res, next) => {

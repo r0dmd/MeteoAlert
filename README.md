@@ -3,7 +3,8 @@
 -   **POST** ✅ - ["/api/users/register"] - Genera un nuevo usuario. No requiere autenticación.
 -   **POST** ✅ - ["/api/users/login"] - Inicia sesión con un usuario existente. No requiere autenticación.
 -   **GET** ✅- ["/api/users/profile"] - Obtiene los datos del usuario logueado. Requiere autenticación.
--   **PUT** - ["/api/users/profile/update"] - Actualiza los datos de un usuario. Requiere autenticación.
+-   **PUT** ✅(@@@ falta probarlo) - ["/api/users/profile/update"] - Actualiza los datos de un usuario. Requiere autenticación.
+-   **PUT** ✅(@@@ falta probarlo) - ["/api/users/profile/update/password"] - Actualiza la contraseña de un usuario. Requiere autenticación.
 -   **GET** - ["/api/users"] - Obtiene un listado de todos los usuarios para gestionarlos. Requiere autenticación de administrador.
 -   **DELETE** - ["/api/users/:userId/delete"] - Elimina los datos de un usuario. Requiere autenticación de administrador.
 

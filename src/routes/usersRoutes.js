@@ -7,6 +7,7 @@ import {
     loginUserController,
     getUserController,
     updateUserController,
+    updatePassController,
     getAllUsersController,
     deleteUserController,
 } from '../controllers/users/index.js';
@@ -31,6 +32,13 @@ router.get('/profile', authUserMiddleware, getUserController);
 
 // Ruta para actualizar los datos de un usuario
 router.put('/profile/update', authUserMiddleware, updateUserController);
+
+// Ruta para actualizar la contraseña
+router.patch(
+    '/profile/update/password',
+    authUserMiddleware,
+    updatePassController,
+);
 
 // Ruta para obtener todos los usuarios
 router.get('/', authAdminMiddleware, getAllUsersController);

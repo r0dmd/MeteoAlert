@@ -7,7 +7,6 @@ import joiErrorMessages from '../joiErrorMessages.js';
 const updateUserSchema = Joi.object({
     username: Joi.string().alphanum().min(2).max(30).optional(),
     email: Joi.string().email().max(100).optional(),
-    password: Joi.string().min(7).max(30).optional(),
 }).messages(joiErrorMessages);
 
 export default updateUserSchema;
