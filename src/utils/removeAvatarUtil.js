@@ -14,7 +14,7 @@ const removeAvatarUtil = async (fileName) => {
         // Intentamos acceder al archivo, y lo eliminamos
         try {
             await fs.access(avatarPath);
-            await fs.unling(avatarPath);
+            await fs.unlink(avatarPath);
         } catch {
             // Si hubo error en el acceso porque no exsite la imagen, finalizamos la función
             return;

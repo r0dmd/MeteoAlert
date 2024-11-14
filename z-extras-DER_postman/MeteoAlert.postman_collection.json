@@ -39,6 +39,35 @@
 					"response": []
 				},
 				{
+					"name": "login (admin)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"adminadmin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/users/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "login (normal)",
 					"request": {
 						"method": "POST",
@@ -68,21 +97,24 @@
 					"response": []
 				},
 				{
-					"name": "login (admin)",
+					"name": "profile",
 					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"adminadmin\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authAdmin}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authUser}}",
+								"type": "text",
+								"disabled": true
 							}
-						},
+						],
 						"url": {
-							"raw": "localhost:8000/api/users/login",
+							"raw": "localhost:8000/api/users/profile",
 							"host": [
 								"localhost"
 							],
@@ -90,13 +122,162 @@
 							"path": [
 								"api",
 								"users",
-								"login"
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authAdmin}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authUser}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/vaati/Desktop/Pictures/! beautiful-wallpaper-download-16.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/users/profile/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"profile",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile update password",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwiaWF0IjoxNzMxNjE2NzE3LCJleHAiOjE3MzU5MzY3MTd9.ZeEzaouiIj1ADXQ2AWGe1aVy2rQpV-bPrqI3IYDU1OA",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authUser}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPass\": \"adminadmin\",\r\n    \"newPass\": \"adminadmin2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/users/profile/update/password",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"profile",
+								"update",
+								"password"
 							]
 						}
 					},
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "recurso estático",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/:nombre",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						":nombre"
+					],
+					"variable": [
+						{
+							"key": "nombre",
+							"value": "51233ca5-b162-40b9-a501-be0fef8abeb1.pdf"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "authAdmin",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "authUser",
+			"value": "",
+			"type": "string"
 		}
 	]
 }
