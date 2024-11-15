@@ -22,9 +22,9 @@ const updatePassModel = async (userId, oldPass, newPass) => {
     // Encriptamos la nueva contraseña y la antigua
     const hashedNewPass = await bcrypt.hash(newPass, 10);
 
-    // Actualizamos la BD
+    // Actualizamos la BD ('modifiedAt = NOW()' no es necesario porque en initDb ya pusimos que lo haga automáticamente)
     const [res] = await pool.query(
-        `UPDATE users SET modifiedAt = NOW(), lastAuthUpdate = NOW(), password = ? WHERE id = ?`,
+        `UPDATE users SET lastAuthUpdate = NOW(), password = ? WHERE id = ?`,
         [hashedNewPass, userId],
     );
 

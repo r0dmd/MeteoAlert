@@ -16,8 +16,8 @@ const updateUserModel = async (user) => {
     const password = user.password;
     delete user.password;
 
-    // Cada vez que hacemos un update hay que actualizar el campo modifiedAt
-    let sql = 'UPDATE users SET modifiedAt = NOW()';
+    // Actualizamos (no hace falta 'SET modifiedAt = NOW()' porque ya el campo lo hace automáticamente en initDb)
+    let sql = 'UPDATE users';
     let args = [];
 
     // Añadimos con '?' los valores de las claves para evitar código malicioso

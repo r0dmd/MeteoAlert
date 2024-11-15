@@ -43,7 +43,7 @@ router.patch(
 // Ruta para obtener todos los usuarios
 router.get('/', authAdminMiddleware, getAllUsersController);
 
-// Ruta para eliminar los datos de un usuario
+// Ruta para eliminar lógicamente los datos de un usuario
 router.delete('/:userId/delete', authAdminMiddleware, deleteUserController);
 
 export default router;
