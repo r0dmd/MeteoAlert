@@ -31,6 +31,9 @@ const addUserController = async (req, res, next) => {
             generateErrorUtil('Error de inserción en la base de datos', 400);
 
         // RES: Envía una respuesta al cliente
+        // NOTA: En cuanto a los códigos, recordamos que...
+        // 200 (OK): Se usa para indicar éxito general en operaciones como consultas o actualizaciones. Se envía por defecto, y no es necesario explicitarlo.
+        // 201 (Created): Se usa específica y necesariamente cuando un recurso nuevo ha sido creado con éxito en el servidor, es decir, para inserciones en la BD.
         res.status(201).send({
             status: 'ok',
             message: 'Usuario registrado',
