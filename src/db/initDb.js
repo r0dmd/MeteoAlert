@@ -37,7 +37,7 @@ const main = async () => {
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
                 userId INT UNSIGNED NOT NULL,
                 FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
-                location VARCHAR(100),
+                location VARCHAR(100) NOT NULL,
                 latitude DECIMAL(10, 7),
                 longitude DECIMAL(10, 7),
                 description VARCHAR(255),

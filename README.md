@@ -10,7 +10,8 @@
 
 ## Endpoints de ubicaciones
 
--   **POST** - ["/api/locations/new"] - Genera una nueva ubicación. Requiere autenticación.
+-   **POST** ✅ - ["/api/locations/new"] - Genera una nueva ubicación. Requiere autenticación.
+-   **GET** - ["/api/locations"] - Obtiene un listado de todas las ubicaciones de un usuario. Requiere autenticación.
 -   **GET** - ["/api/locations/:locationId"] - Obtiene los datos de una ubicación específica. Requiere autenticación.
 -   **PUT** - ["/api/locations/:locationId/update"] - Actualiza los datos de una ubicación. Requiere autenticación.
 -   **DELETE** - ["/api/locations/:locationId/delete"] - Elimina una ubicación. Requiere autenticación.
@@ -18,7 +19,7 @@
 ## Endpoints de preferencias
 
 -   **POST** - ["/api/preferences/new"] - Genera las preferencias de alertas de un usuario. Requiere autenticación.
--   **GET** - ["/api/preferences"] - Obtiene las preferencias de alertas de un usuario. Requiere autenticación.
+-   **GET** - ["/api/preferences"] - Obtiene todas las preferencias de alertas de un usuario. Requiere autenticación.
 -   **PUT** - ["/api/preferences/:preferenceId"] - Actualiza las preferencias de alertas de un usuario. Requiere autenticación.
 -   **DELETE** - ["/api/preferences/:preferenceId/delete"] - Elimina las preferencias de alertas de un usuario. Requiere autenticación.
 

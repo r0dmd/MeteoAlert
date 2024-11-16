@@ -292,6 +292,52 @@
 			]
 		},
 		{
+			"name": "LOCATIONS",
+			"item": [
+				{
+					"name": "new",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authAdmin}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authUser}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"location\": \"Nowhere\",\r\n    \"latitude\": \"12.3542\",\r\n    \"longitude\": \"-4.32425\",\r\n    \"description\": \"Un lugar muy bonito.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/locations/new",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"new"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "recurso estático",
 			"request": {
 				"method": "GET",
@@ -308,7 +354,7 @@
 					"variable": [
 						{
 							"key": "nombre",
-							"value": "51233ca5-b162-40b9-a501-be0fef8abeb1.pdf"
+							"value": "avatar1.jpg"
 						}
 					]
 				}

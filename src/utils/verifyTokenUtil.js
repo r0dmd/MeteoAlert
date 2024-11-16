@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-import { getLastAuthUpdateModel } from '../models/users/index.js';
+import { selectLastAuthUpdateModel } from '../models/users/index.js';
 import { generateErrorUtil } from './index.js';
 
 const { SECRET } = process.env; // Clave para desencriptar el token
@@ -17,7 +17,7 @@ const verifyTokenUtil = async (token) => {
 
         //Comprobamos que la fecha del token sea válida
         const lastAuthUpdate = new Date(
-            await getLastAuthUpdateModel(tokenInfo.id),
+            await selectLastAuthUpdateModel(tokenInfo.id),
         );
 
         // Tomamos la fecha de creación del token en segundos, la pasamos a milisegundos, usamos moment para convertirla de UTC a local de Europa/Madrid, y convertimos el resultado en Date para operar con el con facilidad

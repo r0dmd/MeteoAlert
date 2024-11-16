@@ -36,8 +36,6 @@ const addUserController = async (req, res, next) => {
             message: 'Usuario registrado',
         });
     } catch (err) {
-        console.log(err.details);
-
         // NEXT: Función que permite pasar el control al siguiente middleware en la pila de ejecución
         next(err);
     }

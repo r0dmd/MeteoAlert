@@ -1,5 +1,5 @@
 import addUserModel from './addUserModel.js';
-import getLastAuthUpdateModel from './getLastAuthUpdateModel.js';
+import selectLastAuthUpdateModel from './selectLastAuthUpdateModel.js';
 import selectAllUsersModel from './selectAllUsersModel.js';
 import selectUserByEmailModel from './selectUserByEmailModel.js';
 import selectUserByIdModel from './selectUserByIdModel.js';
@@ -11,7 +11,7 @@ import updateUserModel from './updateUserModel.js';
 
 export {
     addUserModel,
-    getLastAuthUpdateModel,
+    selectLastAuthUpdateModel,
     selectAllUsersModel,
     selectUserByEmailModel,
     selectUserByIdModel,

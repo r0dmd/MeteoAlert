@@ -1,11 +1,13 @@
 import addLocationController from './addLocationController.js';
 import deleteLocationController from './deleteLocationController.js';
-import getLocationController from './getLocationDataController.js';
+import getLocationDetailsController from './getLocationDetailsController.js';
+import getUserLocationsController from './getUserLocationsController.js';
 import updateLocationController from './updateLocationController.js';
 
 export {
     addLocationController,
     deleteLocationController,
-    getLocationController,
+    getLocationDetailsController,
+    getUserLocationsController,
     updateLocationController,
 };

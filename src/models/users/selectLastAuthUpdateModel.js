@@ -3,7 +3,7 @@ import { generateErrorUtil } from '../../utils/index.js';
 
 // ------------------------------------------
 // Función que consulta la BD para devolver la última actualización de autorización de un usuario por ID
-const getLastAuthUpdateModel = async (userId) => {
+const selectLastAuthUpdateModel = async (userId) => {
     const pool = await getPool();
 
     const [users] = await pool.query(
@@ -17,4 +17,4 @@ const getLastAuthUpdateModel = async (userId) => {
     return users[0].lastAuthUpdate;
 };
 
-export default getLastAuthUpdateModel;
+export default selectLastAuthUpdateModel;
