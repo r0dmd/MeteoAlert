@@ -38,8 +38,6 @@ const loginUserController = async (req, res, next) => {
             role: user.role,
         };
 
-        console.log(tokenInfo.role);
-
         // jwt.sign(payload, secretOrPrivateKey, [options, callback])
         const token = jwt.sign(tokenInfo, SECRET, {
             expiresIn: TOKEN_EXPIRATION,

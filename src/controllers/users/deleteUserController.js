@@ -2,7 +2,8 @@ import {
     selectUserByIdModel,
     updateUserAsInactiveModel,
 } from '../../models/users/index.js';
-import generateErrorUtil from '../../utils/generateErrorUtil.js';
+
+import { generateErrorUtil } from '../../utils/index.js';
 
 // ------------------------------------------
 // Función que le permite a un administrador eliminar lógicamente un usuario en la BD (es decir, manteniendo su fila pero borrando todos sus datos)
