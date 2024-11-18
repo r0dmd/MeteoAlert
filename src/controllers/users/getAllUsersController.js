@@ -7,6 +7,8 @@ const getAllUsersController = async (req, res, next) => {
         // Seleccionamos usuarios
         const users = await selectAllUsersModel();
 
+        // Si se llega hasta este punto, siempre habrá al menos 1 usuario, aunque sea el propio administrador, por lo que no tiene sentido especificar un error aquí para lo contrario
+
         // Respondemos con los datos de los usuarios
         res.send({
             status: 'ok',
