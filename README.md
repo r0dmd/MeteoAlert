@@ -18,9 +18,9 @@
 
 ## Endpoints de preferencias
 
--   **POST** - ["/api/preferences/new"] - Genera las preferencias de alertas de un usuario. Requiere autenticación.
+-   **POST** ✅ - ["/api/preferences/new"] - Genera las preferencias de alertas de un usuario. Requiere autenticación.
 -   **GET** - ["/api/preferences"] - Obtiene todas las preferencias de alertas de un usuario. Requiere autenticación.
--   **PUT** - ["/api/preferences/:preferenceId"] - Actualiza las preferencias de alertas de un usuario. Requiere autenticación.
+-   **PUT** - ["/api/preferences/:preferenceId"] - Actualiza una preferencia de alerta de un usuario. Requiere autenticación.
 -   **DELETE** - ["/api/preferences/:preferenceId/delete"] - Elimina las preferencias de alertas de un usuario. Requiere autenticación.
 
 ## Endpoints de alertas

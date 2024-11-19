@@ -1,7 +1,7 @@
 import getPool from '../../db/getPool.js'; // Conexión a la BD
 
 // ------------------------------------------
-// Función que inserta una nueva ubicación  en la BD
+// Función que inserta una nueva ubicación en la BD
 const addLocationModel = async (
     userId,
     location,

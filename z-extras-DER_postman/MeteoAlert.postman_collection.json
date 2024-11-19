@@ -518,6 +518,52 @@
 			]
 		},
 		{
+			"name": "PREFERENCES",
+			"item": [
+				{
+					"name": "new",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authAdmin}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authUser}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"polen\",\r\n    \"threshold\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/preferences/new",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"preferences",
+								"new"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "recurso estático",
 			"request": {
 				"method": "GET",
