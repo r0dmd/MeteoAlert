@@ -560,6 +560,96 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "(getUserPreferences)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authAdmin}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authUser}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/preferences",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"preferences"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": ":preferenceId (update)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authAdmin}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authUser}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"threshold\": \"54\",\r\n    \"active\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/preferences/:preferenceId",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"preferences",
+								":preferenceId"
+							],
+							"variable": [
+								{
+									"key": "preferenceId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
