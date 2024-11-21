@@ -25,6 +25,7 @@
         "moment-timezone": "^0.5.46",
         "morgan": "^1.10.0",
         "mysql2": "^3.11.4",
+        "node-cron": "^3.0.3",
         "sharp": "^0.33.5"
     },
     "devDependencies": {

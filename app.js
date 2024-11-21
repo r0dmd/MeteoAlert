@@ -13,6 +13,7 @@ import {
     locationsRoutes,
     preferencesRoutes,
     usersRoutes,
+    weatherRoutes,
 } from './src/routes/index.js';
 
 // Importamos las variables de entorno necesarias
@@ -34,6 +35,7 @@ app.use('/api/users', usersRoutes);
 app.use('/api/locations', locationsRoutes);
 app.use('/api/preferences', preferencesRoutes);
 app.use('/api/alerts', alertsRoutes);
+app.use('/api/weather', weatherRoutes);
 
 // Middeware de manejo de errores
 // eslint-disable-next-line no-unused-vars
