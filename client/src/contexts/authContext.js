@@ -1,4 +1,4 @@
-// Importamos las prop-types.
+// Importamos prop-types.
 import PropTypes from 'prop-types';
 
 // Importamos la función que genera un contexto y los hooks.
@@ -14,17 +14,16 @@ export const AuthContext = createContext(null);
 
 // Creamos el componente AuthProvider.
 export const AuthProvider = ({ children }) => {
-  // Inicializo authLoading a true por que nada más crear no tenemos user todavía
+  // Inicializamos authLoading a true porque no tenemos user todavía
   const [authLoading, setAuthLoading] = useState(true);
 
-  // Declaramos una variable en el state para manejar el token.
+  // Declaramos variables en el State: para manejar el token, para almacenar los datos del usuario.
   const [authToken, setAuthToken] = useState(
     localStorage.getItem(VITE_AUTH_TOKEN) || null
   );
-
-  // Declaramos una variable en el State para almacenar los datos del usuario.
   const [authUser, setAuthUser] = useState(null);
-  const navigate = useNavigate();
+
+  const navigate = useNavigate(); // Navegación
 
   // Solicitamos los datos del usuario si existe un token.
   useEffect(() => {
@@ -52,7 +51,7 @@ export const AuthProvider = ({ children }) => {
         setAuthUser(body.data.user);
       } catch (err) {
         // Si el token no es correcto lo eliminamos del State y del almacenamiento local.
-        if (err.message === 'Token no válido') {
+        if (err.message === 'Token inválido') {
           setAuthToken(null);
           localStorage.removeItem(VITE_AUTH_TOKEN);
         }
@@ -65,6 +64,7 @@ export const AuthProvider = ({ children }) => {
       }
     };
 
+    // Llamamos a la función, si hay token.
     if (authToken) {
       fetchUser();
     } else {
@@ -86,25 +86,12 @@ export const AuthProvider = ({ children }) => {
   };
 
   // Función que actualiza el usuario en el State.
-  const authUpdateUserState = (
-    username,
-    email,
-    firstName,
-    lastName,
-    role,
-    biography,
-    linkedIn,
-    avatar
-  ) => {
+  const authUpdateUserState = (username, email, role, avatar) => {
     setAuthUser((prevAuthUser) => ({
       ...prevAuthUser,
       username,
       email,
-      firstName,
-      lastName,
       role,
-      biography,
-      linkedIn,
       avatar,
     }));
   };
@@ -113,11 +100,9 @@ export const AuthProvider = ({ children }) => {
   const hasRole = (role) => {
     return authUser?.role === role;
   };
-
   // Funciones para verificar qué rol tiene el usuario, si lo tiene.
-  const isAdmin = () => hasRole('administrador');
-  const isDeveloper = () => hasRole('desarrollador');
-  const isOrganizer = () => hasRole('organizador');
+  const isAdmin = () => hasRole('admin');
+  const isNormal = () => hasRole('normal');
 
   // Función para registrar un nuevo usuario.
   const registerUser = async (userData) => {
@@ -171,7 +156,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // función para actualizar el usuario. OJO: no actualiza el avatar
+  // Función para actualizar el usuario. OJO: no actualiza el avatar.
   const updateUser = async (userProfile) => {
     try {
       let avatar = null;
@@ -203,7 +188,8 @@ export const AuthProvider = ({ children }) => {
       throw new Error(err.message);
     }
   };
-  // función para actualizar el avatar
+
+  // Función para actualizar el avatar
   const updateUserWithAvatar = async (userProfile) => {
     try {
       // Creamos un objeto FormData.
@@ -235,7 +221,8 @@ export const AuthProvider = ({ children }) => {
       throw new Error(err.message);
     }
   };
-  // función para actualizar el usuario. OJO: no actualiza el avatar
+
+  // Función para actualizar la contraseña.
   const updatePassword = async (oldPass, newPass) => {
     try {
       const res = await fetch(`${VITE_API_URL}/users/profile/update/password`, {
@@ -268,8 +255,7 @@ export const AuthProvider = ({ children }) => {
         authLogoutState,
         authUpdateUserState,
         isAdmin,
-        isDeveloper,
-        isOrganizer,
+        isNormal,
         registerUser,
         loginUser,
         updateUser,
