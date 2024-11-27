@@ -1,0 +1,30 @@
+name: Conditional Messages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run a script
+        run: |
+          echo "This is the main job script."
+          # Uncomment the line below to simulate a failure
+          # exit 1
+
+      - name: Success message
+        if: ${{ success() }}
+        run: echo "🎉 Job succeeded! Well done!"
+
+      - name: Failure message
+        if: ${{ failure() }}
+        run: echo "❌ Job failed! Please check the logs."
