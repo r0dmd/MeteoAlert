@@ -19,7 +19,7 @@ jobs:
         run: |
           echo "This is the main job script."
           # Uncomment the line below to simulate a failure
-          # exit 1
+           exit 1
 
       - name: Success message
         if: ${{ success() }}
