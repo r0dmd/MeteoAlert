@@ -16,7 +16,7 @@ jobs:
         run: |
           echo "Running Job 1"
           # Uncomment the following line to simulate a failure
-          # exit 1
+          exit 1
 
   job2:
     needs: job1
@@ -33,3 +33,11 @@ jobs:
     steps:
       - name: Job 1 succeeded, running Job 3
         run: echo "Job 1 succeeded. This is Job 3 executing now."
+
+  job4:
+    needs: job2
+    runs-on: ubuntu-latest
+    if: ${{ failure()}}
+    steps:
+      - name: Job 2 failed, running Job 4
+        run: echo "Job 2 failed. This is Job 4 executing now."
