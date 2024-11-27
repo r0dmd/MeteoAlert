@@ -3,6 +3,7 @@ import { loginUser } from '../../api/index.js';
 import { AuthContext } from '../../contexts/index.js';
 
 import { useDocumentTitle } from '../../hooks/index.js';
+import toast from 'react-hot-toast';
 
 // ------------------------------------------
 const LoginPage = () => {
@@ -19,7 +20,7 @@ const LoginPage = () => {
       authLoginState(token); // Guardar el token en el contexto.
       console.log('Usuario autenticado:', user);
     } catch (err) {
-      console.error('Error al iniciar sesión:', err.message);
+      toast.error(err.message);
     }
   };
 

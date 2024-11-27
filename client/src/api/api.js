@@ -29,12 +29,12 @@ const apiFetch = async (endpoint, { authToken, ...options } = {}) => {
       throw new Error(body.message);
     }
 
-    // Retornamos los datos exitosos.
+    // Si la respuesta es exitosa, retornamos los datos.
     return body.data;
   } catch (err) {
     // Mostramos el error en consola para facilitar la depuración.
     console.error(`Error en apiFetch (${endpoint}): ${err.message}`);
-    throw err; // Re-lanzamos el error para manejarlo donde se use la función.
+    throw err; // Relanzamos el error para manejarlo donde se use la función.
   }
 };
 
