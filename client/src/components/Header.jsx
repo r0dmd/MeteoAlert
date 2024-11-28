@@ -1,7 +1,7 @@
 const Header = () => {
   return (
-    <header>
-      <h1>HOLA</h1>
+    <header className='h-10 bg-weather-sunny'>
+      <h1>MeteoAlert</h1>
     </header>
   );
 };
