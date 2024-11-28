@@ -6,6 +6,8 @@ import { useDocumentTitle } from '../../hooks/index.js';
 import { useGoHome } from '../../hooks/index.js';
 import toast from 'react-hot-toast';
 
+import { jwtDecode } from 'jwt-decode';
+
 // ------------------------------------------
 const LoginPage = () => {
   // Titulo de pestaña
@@ -34,19 +36,18 @@ const LoginPage = () => {
       setLoading(true);
 
       // Obtenemos una respuesta.
-      const { token, user } = await loginUser({ email, password });
+      const { token } = await loginUser({ email, password });
       authLoginState(token);
+
+      // Decodificamos el token para extraer los datos del usuario.
+      const user = jwtDecode(token);
       console.log('Usuario autenticado:', user);
-      toast.success('Bienvenido');
-      goHome();
 
       // Redirigimos a la página principal.
-      toast.success('Bienvenido');
+      toast.success(`Hola, ${user.username}`);
       goHome();
     } catch (err) {
-      toast.error(err.message, {
-        id: 'login',
-      });
+      toast.error(err.message);
     } finally {
       // Indicamos que ha finalizado el fetch.
       setLoading(false);
