@@ -17,7 +17,8 @@ import {
 } from './pages/index.js';
 
 // Componentes
-import { CloudsBackground, Header, Footer } from './components';
+import { Header, Footer } from './components';
+import { ParticleBackground } from './components/aux_components/index.js';
 
 // Otras funciones
 import { Toaster } from 'react-hot-toast';
@@ -29,7 +30,7 @@ const App = () => {
     <section>
       <Toaster position='top-center' toastOptions={{ duration: 3000 }} />
       <Header />
-      <CloudsBackground />
+      <ParticleBackground />
 
       <section>
         <Routes>
