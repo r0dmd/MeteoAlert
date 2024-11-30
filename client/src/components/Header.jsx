@@ -64,7 +64,7 @@ const Header = () => {
                 <AiOutlineAlert />
               </button>
 
-              {/* Menú hamburguesa */}
+              {/* Icono de menú hamburguesa */}
               <button
                 title="Menú"
                 aria-label="Menú"

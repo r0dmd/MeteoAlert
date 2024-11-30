@@ -5,9 +5,46 @@ const HomePage = () => {
   useDocumentTitle('Inicio');
 
   return (
-    <>
-      <h2>INICIO</h2>
-    </>
+    <div>
+      <p className="mx-auto my-8 w-4/5 rounded border border-whitegray p-3 text-center font-poppins text-3xl font-semibold shadow-md">
+        Portal de alertas meteorológicas
+      </p>
+
+      <div className="bg-darkgray p-3 text-whitegray">
+        <p className="my-2">
+          Con{' '}
+          <span className="italic underline decoration-sunnyyellow decoration-2 underline-offset-4">
+            MeteoAlert
+          </span>
+          , puedes:
+        </p>
+        <ul>
+          <li className="my-2 ml-5">
+            ✅ Recibir alertas{' '}
+            <span className="text-sunnyyellow">en tiempo real</span> basadas en
+            tu ubicación.
+          </li>
+          <li className="my-2 ml-5">
+            ✅ <span className="text-sunnyyellow">Personalizar</span> los tipos
+            de alertas que te interesan.
+          </li>
+          <li className="my-2 ml-5">
+            ✅ Acceder a información meteorológica{' '}
+            <span className="text-sunnyyellow">confiable</span>, gracias a{' '}
+            <a
+              title="Enlace a Open-Meteo"
+              href="https://open-meteo.com/"
+              className="font-bold italic text-linkblue"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open-Meteo
+            </a>
+            .
+          </li>
+        </ul>
+      </div>
+    </div>
   );
 };
 

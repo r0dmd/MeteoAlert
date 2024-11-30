@@ -22,7 +22,7 @@ export default {
       nightblue: '#1E293B', // Noche, azul oscuro
       vibrantblue: '#2563EB', // Botón principal, azul vibrante
       green: '#10B981', // Botón secundario, verde
-      linkblue: '#3B82F6', // Enlaces, azul claro
+      linkblue: '#9ABEF9', // Enlaces, azul claro
     },
   },
   plugins: [],
