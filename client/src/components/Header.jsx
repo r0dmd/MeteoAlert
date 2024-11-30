@@ -36,16 +36,35 @@ const Header = () => {
 
         {/* BOTONES */}
         <nav className="flex gap-x-5">
+          {/* QUE NO REQUIEREN USUARIO*/}
+          {!authUser && (
+            <>
+              {/* Iniciar sesión */}
+              <NavLink to="/login">
+                <button
+                  title="Iniciar sesión"
+                  aria-label="Iniciar sesión"
+                  className="rounded-full border-2 border-sunnyyellow px-2 py-1 text-sm font-semibold text-sunnyyellow hover:bg-sunnyyellow hover:text-darkgray"
+                >
+                  Iniciar sesión
+                </button>
+              </NavLink>
+            </>
+          )}
+
+          {/* QUE REQUIEREN USUARIO */}
           {authUser && (
             <>
+              {/* Notificaciones de alerta */}
               <button
                 title="Mis notificaciones"
-                aria-label="Mis notificaciones de alertas"
+                aria-label="Mis notificaciones de alerta"
                 className="rounded border-2 border-sunnyyellow text-3xl text-sunnyyellow hover:text-whitegray"
               >
                 <AiOutlineAlert />
               </button>
 
+              {/* Menú hamburguesa */}
               <button
                 title="Menú"
                 aria-label="Menú"
