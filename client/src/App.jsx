@@ -18,7 +18,7 @@ import {
 
 // Componentes
 import { Header, Footer } from './components';
-import { ParticleBackground } from './components/aux_components/index.js';
+import { ParticlesBackground } from './components/aux_components/index.js';
 
 // Otras funciones
 import { Toaster } from 'react-hot-toast';
@@ -27,12 +27,12 @@ import { Toaster } from 'react-hot-toast';
 // Componente principal de la aplicación, actúa como base de la estructura visual. También configura elementos globales como notificaciones, contextos compartidos, y el enrutamiento principal
 const App = () => {
   return (
-    <section>
+    <section className='flex flex-col min-h-screen'>
       <Toaster position='top-center' toastOptions={{ duration: 3000 }} />
       <Header />
-      <ParticleBackground />
+      <ParticlesBackground />
 
-      <section>
+      <section className='flex-grow'>
         <Routes>
           {/* USUARIOS */}
           <Route path='/' element={<HomePage />} />

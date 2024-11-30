@@ -1,3 +1,3 @@
-import ParticleBackground from './ParticleBackground.jsx';
+import ParticlesBackground from './ParticlesBackground.jsx';
 
-export { ParticleBackground };
+export { ParticlesBackground };
