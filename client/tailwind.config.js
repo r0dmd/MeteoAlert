@@ -9,20 +9,19 @@ export default {
       montserrat: ['Montserrat', 'sans-serif'],
     },
     colors: {
-      whitegray: '#F9FAFB', // Fondo principal, blanco suave
-      lightgray: '#F3F4F6', // Fondo de tarjetas y elementos secundarios
+      red: '#EF4444', // Alerta alta, rojo
+      warmyellow: '#F59E0B', // Alerta moderada, amarillo cálido
+      sunnyyellow: '#FBBF24', // Soleado, amarillo dorado
+      green: '#10B981', // Botón secundario, verde
+      skyblue: '#93C5FD', // Tormenta, azul suave
+      linkblue: '#9ABEF9', // Enlaces, azul claro
+      vibrantblue: '#2563EB', // Botón principal, azul vibrante
+      nightblue: '#1E293B', // Noche, azul oscuro
       darkgray: '#1F2937', // Texto principal, gris oscuro
       gray: '#6B7280', // Texto secundario, gris medio
-      warmyellow: '#F59E0B', // Alerta moderada, amarillo cálido
-      red: '#EF4444', // Alerta alta, rojo
-      darkred: '#B91C1C', // Alerta crítica, rojo oscuro
-      sunnyyellow: '#FBBF24', // Soleado, amarillo dorado
       cloudygray: '#9CA3AF', // Nublado, gris claro
-      skyblue: '#93C5FD', // Tormenta, azul suave
-      nightblue: '#1E293B', // Noche, azul oscuro
-      vibrantblue: '#2563EB', // Botón principal, azul vibrante
-      green: '#10B981', // Botón secundario, verde
-      linkblue: '#9ABEF9', // Enlaces, azul claro
+      lightgray: '#F3F4F6', // Fondo de tarjetas y elementos secundarios
+      whitegray: '#F9FAFB', // Fondo principal, blanco suave
     },
   },
   plugins: [],

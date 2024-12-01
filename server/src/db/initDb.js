@@ -52,8 +52,8 @@ const main = async () => {
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
                 userId INT UNSIGNED NOT NULL,
                 FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
-                type ENUM('lluvia', 'tormenta', 'inundación', 'nieve', 'granizo', 'hielo', 'deslizamiento', 'terremoto', 'viento', 'polen', 'radiación', 'incendio', 'niebla', 'oleaje', 'frío extremo', 'calor extremo') NOT NULL,
-                threshold DECIMAL(5, 2),
+                type ENUM('temperatura', 'precipitación', 'viento') NOT NULL,
+                threshold DECIMAL(5, 2) NOT NULL,
                 active BOOLEAN DEFAULT TRUE,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP, 
                 modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
@@ -68,7 +68,7 @@ const main = async () => {
                 FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
                 locationId INT UNSIGNED NOT NULL,
                 FOREIGN KEY (locationId) REFERENCES locations(id) ON DELETE CASCADE,
-                type ENUM('lluvia', 'tormenta', 'inundación', 'nieve', 'granizo', 'hielo', 'deslizamiento', 'terremoto', 'viento', 'polen', 'radiación', 'incendio', 'niebla', 'oleaje', 'frío extremo', 'calor extremo') NOT NULL,
+                type ENUM('temperatura', 'precipitación', 'viento') NOT NULL,
                 value DECIMAL(5, 2),
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP, 
                 modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP

@@ -1,4 +1,4 @@
-/* FUENTES */
+/* IMPORTACIÓN DE FUENTES */
 /* Inter - fuente principal (regular) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 /* Poppins - para encabezados (bold) */
@@ -6,12 +6,98 @@
 /* Montserrat - para números y datos clave (semibold) */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* NOTA: CAPAS DE TAILWIND */
+/* 1. @tailwind base: Estilos globales, ajustes de elementos HTML (`<body>`, `<h1>`, `<p>`, etc.) y reseteos de CSS (normalización de márgenes, fuentes predeterminadas, line-height, "box-sizing: border-box;", etc.) para garantizar consistencia en los navegadores.
+   - NOTA: Aunque es válido usar @apply en @layer base y el código sería funcional, no es una práctica recomendada, porque no se ajusta al propósito de la capa. La capa base está diseñada para estilos globales escritos en CSS estándar, y @apply se debe usar en las capas components o utilities para agrupar utilidades. 
+   - **Ejemplo**:
+       @layer base {
+         h1 {
+           font-family: 'Arial, sans-serif';
+           font-weight: bold;
+           color: #333;
+         }
+
+         body {
+           background-color: #f9f9f9;
+           margin: 0;
+         }
+       }
+
+2. @tailwind components: Estilos predefinidos de clases que suelen agrupar utilidades con `@apply` para  componentes reutilizables de la UI como botones, formularios o tipografía. 
+   - **Ejemplo**:
+       @layer components {
+         .btn-primary {
+           @apply bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700;
+         }
+
+         .card {
+           @apply shadow-lg rounded-lg p-6 bg-white;
+         }
+       }
+
+3. @tailwind utilities: Clases utilitarias de propósito único que controlan propiedades específicas y pueden aplicarse directamente en el HTML. También se usan para definir utilidades personalizadas que Tailwind no ofrece por defecto.
+   - **Ejemplo**:
+       @layer utilities {
+         .text-shadow-md {
+           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+         }
+
+         .skew-10 {
+           transform: skewY(-10deg);
+         }
+       }
+
+Reglas para decidir:
+- Si el estilo afecta elementos HTML directamente -> `@tailwind base`.
+- Si es un estilo reutilizable y agrupado -> `@tailwind components`.
+- Si es un estilo utilitario específico -> `@tailwind utilities`.
+  ---- ES DECIR... Si un estilo es global, va en base. Si es reutilizable, va en components. Si es único, va en utilities.
+
+Orden de procesamiento:
+1. Base: Configura reseteos y estilos globales.
+2. Components: Aplica estilos reutilizables y personalizados.
+3. Utilities: Permite sobrescribir con ajustes específicos gracias a su mayor prioridad.
+*/
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* VARIABLES */
+:root {
+  /* Colores */
+  --red: #ef4444;
+  --warmyellow: #f59e0b;
+  --sunnyyellow: #fbbf24;
+  --green: #10b981;
+  --skyblue: #93c5fd;
+  --linkblue: #9abef9;
+  --vibrantblue: #2563eb;
+  --nightblue: #1e293b;
+  --darkgray: #1f2937;
+  --gray: #6b7280;
+  --cloudygray: #9ca3af;
+  --lightgray: #f3f4f6;
+  --whitegray: #f9fafb;
+}
+
 @layer base {
   body {
-    @apply bg-skyblue text-darkgray;
+    background-color: var(--skyblue);
+    color: var(--darkgray);
+  }
+
+  a {
+    color: var(--linkblue);
+  }
+
+  a:hover {
+    color: var(--skyblue);
+  }
+}
+
+@layer utilities {
+  .text-shadow-md {
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.219);
   }
 }

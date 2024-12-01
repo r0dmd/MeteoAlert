@@ -10,22 +10,7 @@ const addAlertController = async (req, res, next) => {
     try {
         await validateSchemaUtil(addAlertSchema, req.body);
 
-        // Ponemos let porque hay alertas que no tienen umbral (y en este caso, tampoco un "valor" específico, sino activas o no), como por ejemplo un incendio
-        let { type, value } = req.body;
-        value = value === '' ? null : value;
-
-        // Definimos tipos de alerta que no requieren umbral y por tanto tampoco tendrán valor cuando salten, y si el tipo está en la lista de alertas sin umbral/valor nos aseguramos de que "value" sea null
-        const noValueTypes = [
-            'incendio',
-            'niebla',
-            'terremoto',
-            'deslizamiento',
-            'hielo',
-        ];
-
-        if (noValueTypes.includes(type)) {
-            value = null;
-        }
+        const { type, value } = req.body;
 
         // Pasamos los datos al modelo
         const alertId = await addAlertModel(req.user.id, type, value);

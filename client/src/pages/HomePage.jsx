@@ -6,8 +6,8 @@ const HomePage = () => {
 
   return (
     <div>
-      <p className="mx-auto my-8 w-4/5 rounded border border-whitegray p-3 text-center font-poppins text-3xl font-semibold shadow-md">
-        Portal de alertas meteorológicas
+      <p className="text-shadow-md mx-auto my-8 w-4/5 rounded border border-whitegray p-3 text-center font-poppins text-3xl font-semibold shadow-md">
+        Tu portal de alertas meteorológicas
       </p>
 
       <div className="bg-darkgray p-3 text-whitegray">
@@ -34,7 +34,7 @@ const HomePage = () => {
             <a
               title="Enlace a Open-Meteo"
               href="https://open-meteo.com/"
-              className="font-bold italic text-linkblue"
+              className="font-bold italic"
               target="_blank"
               rel="noopener noreferrer"
             >

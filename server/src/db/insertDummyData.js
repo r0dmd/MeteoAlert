@@ -39,17 +39,17 @@ const insertDummyData = async () => {
         // Insertar preferencias de alerta de prueba
         await pool.query(`
             INSERT INTO preferences (userId, type, threshold, active) VALUES
-            (1, 'lluvia', 10.5, true),
-            (2, 'tormenta', NULL, false),
-            (3, 'incendio', NULL, true)
+            (1, 'precipitación', 10.5, true),
+            (2, 'viento', 22, false),
+            (3, 'temperatura', 35, true)
         `);
 
         // Insertar historial de alertas de prueba
         await pool.query(`
             INSERT INTO alerts (userId, locationId, type, value) VALUES
-            (1, 1, 'lluvia', 12.5),
-            (2, 2, 'tormenta', NULL),
-            (3, 3, 'incendio', NULL)
+            (1, 1, 'precipitación', 12.5),
+            (2, 2, 'viento', 39),
+            (3, 3, 'temperatura', 38)
         `);
 
         console.log('Datos de prueba insertados correctamente.');
