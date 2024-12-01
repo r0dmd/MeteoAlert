@@ -18,9 +18,8 @@ const Header = () => {
     <header className="h-16 border-b-8 border-b-sunnyyellow bg-darkgray">
       <div className="mx-auto flex h-full max-w-6xl items-center px-6">
         {/* LOGO */}
-        <NavLink to="/">
+        <NavLink to="/" title="Ir a inicio">
           <img
-            title="Ir a inicio"
             src="/logo/logo-small.png"
             alt={`Logo de ${VITE_APP_NAME}.`}
             className="h-12"
