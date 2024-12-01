@@ -1,14 +1,45 @@
+import { useContext } from 'react';
+
+import { AuthContext } from '../contexts/index.js';
+
 import { useDocumentTitle } from '../hooks/index.js';
+
+// React icons
+import { RxAvatar } from 'react-icons/rx';
+
+const { VITE_API_UPLOADS } = import.meta.env;
 
 // ------------------------------------------
 const HomePage = () => {
   useDocumentTitle('Inicio');
 
+  const authContext = useContext(AuthContext);
+  const { authUser } = authContext;
+
+  console.log(authUser);
+
   return (
     <div>
-      <p className="text-shadow-md mx-auto my-8 w-4/5 rounded border border-whitegray p-3 text-center font-poppins text-3xl font-semibold shadow-md">
-        Tu portal de alertas meteorológicas
-      </p>
+      {/* Bienvenida */}
+      {authUser ? (
+        <div>
+          <img
+            src={
+              VITE_API_UPLOADS + '/' + authUser.user.avatar ||
+              VITE_API_UPLOADS + '/default-avatar.png'
+            }
+            alt="Avatar del usuario"
+            className="ml-3 h-16 w-16 rounded-full"
+          />
+          <p className="text-shadow-md mx-auto my-8 w-4/5 rounded border border-whitegray p-3 text-center font-poppins text-3xl font-semibold shadow-md">
+            {`Hola, ${authUser.user.username}`}
+          </p>
+        </div>
+      ) : (
+        <p className="text-shadow-md mx-auto my-8 w-4/5 rounded border border-whitegray p-3 text-center font-poppins text-3xl font-semibold shadow-md">
+          Tu portal de alertas meteorológicas
+        </p>
+      )}
 
       <div className="bg-darkgray p-3 text-whitegray">
         <p className="my-2">

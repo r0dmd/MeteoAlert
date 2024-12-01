@@ -85,6 +85,9 @@ Orden de procesamiento:
   body {
     background-color: var(--skyblue);
     color: var(--darkgray);
+    height: auto;
+    min-height: 100vh;
+    scroll-behavior: smooth;
   }
 
   a {

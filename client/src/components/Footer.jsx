@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="h-fit border-t-8 border-t-sunnyyellow bg-darkgray text-whitegray">
       <div className="mx-auto flex h-full flex-wrap justify-center gap-8 p-6">
         {/* MeteoAlert Links */}
-        <ul>
+        <ul className="flex flex-col items-center gap-4 text-center">
           <li className="font-poppins">MeteoAlert</li>
           <NavLink title="Acerca de" to="/about">
             <li className="">Acerca de</li>
@@ -20,7 +20,7 @@ const Footer = () => {
         </ul>
 
         {/* Redes sociales */}
-        <ul className="grid gap-4 text-center">
+        <ul className="flex flex-col items-center gap-4 text-center">
           <li className="font-poppins">Síguenos en</li>
           <div className="grid grid-cols-2 gap-4">
             <a
