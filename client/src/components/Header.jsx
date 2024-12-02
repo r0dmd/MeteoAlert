@@ -6,7 +6,9 @@ import { AuthContext } from '../contexts/index.js';
 import { AiOutlineAlert } from 'react-icons/ai';
 import { IoMenuOutline } from 'react-icons/io5';
 
-const { VITE_APP_NAME } = import.meta.env;
+const { VITE_APP_NAME, VITE_API_UPLOADS } = import.meta.env;
+
+// @@@ PROBLEMA CON USUARIO: LoginPage.jsx:44 devuelve el usuario bien, pero authUser devuelve un objeto user con otro objeto user dentro, de manera que hay que poner authUser.user.username, por ejemplo, para acceder a él. SOLUCIONAR PARA QUE DEVUELVA EL OBJETO BIEN
 
 // ------------------------------------------
 const Header = () => {
@@ -44,7 +46,7 @@ const Header = () => {
                 <button
                   title="Iniciar sesión"
                   aria-label="Iniciar sesión"
-                  className="rounded-full border-2 border-sunnyyellow px-2 py-1 text-sm font-semibold text-sunnyyellow hover:bg-sunnyyellow hover:text-darkgray"
+                  className="login-logout-buttons"
                 >
                   Iniciar sesión
                 </button>
@@ -58,7 +60,7 @@ const Header = () => {
                   onClick={() => setIsAlertModalOpen(true)}
                   title="Mis notificaciones"
                   aria-label="Mis notificaciones de alerta"
-                  className="rounded border-2 border-sunnyyellow text-3xl text-sunnyyellow hover:text-whitegray"
+                  className="header-icons"
                 >
                   <AiOutlineAlert />
                 </button>
@@ -68,7 +70,7 @@ const Header = () => {
                   onClick={() => setIsMenuModalOpen(true)}
                   title="Menú"
                   aria-label="Menú"
-                  className="rounded border-2 border-sunnyyellow text-3xl text-sunnyyellow hover:text-whitegray"
+                  className="header-icons"
                 >
                   <IoMenuOutline />
                 </button>
@@ -116,41 +118,88 @@ const Header = () => {
             onClick={(e) => e.stopPropagation()}
             className="absolute right-7 top-10 w-fit rounded border-4 border-b-warmyellow border-l-sunnyyellow border-r-warmyellow border-t-sunnyyellow bg-nightblue p-6 shadow-lg"
           >
-            <ul className="mt-2 text-sm text-whitegray">
+            <ul className="flex flex-col items-center gap-4 text-sm text-whitegray">
               <li>
-                <NavLink
-                  to="/profile"
-                  onClick={() => setIsMenuModalOpen(false)}
-                >
-                  Perfil
+                {/* Avatar */}
+                <img
+                  src={
+                    VITE_API_UPLOADS + '/' + authUser.user.avatar ||
+                    VITE_API_UPLOADS + '/default-avatar.png'
+                  }
+                  alt="Avatar del usuario"
+                  className="h-20 w-20 rounded-full"
+                />
+              </li>
+              {/* Botones */}
+
+              {isAdmin && (
+                <li>
+                  <NavLink to="/users">
+                    <button
+                      title="Administración"
+                      aria-label="Administración"
+                      onClick={() => setIsMenuModalOpen(false)}
+                      className="header-buttons"
+                    >
+                      Administración
+                    </button>
+                  </NavLink>
+                </li>
+              )}
+
+              <li>
+                <NavLink to="/profile">
+                  <button
+                    title="Mi perfil"
+                    aria-label="Mi perfil"
+                    onClick={() => setIsMenuModalOpen(false)}
+                    className="header-buttons"
+                  >
+                    Mi perfil
+                  </button>
                 </NavLink>
               </li>
+
               <li>
-                <NavLink
-                  to="/settings"
-                  onClick={() => setIsMenuModalOpen(false)}
-                >
-                  Configuración
+                <NavLink to="/locations">
+                  <button
+                    title="Mis ubicaciones"
+                    aria-label="Mis ubicaciones"
+                    onClick={() => setIsMenuModalOpen(false)}
+                    className="header-buttons"
+                  >
+                    Mis ubicaciones
+                  </button>
                 </NavLink>
               </li>
+
               <li>
-                <NavLink to="/help" onClick={() => setIsMenuModalOpen(false)}>
-                  Ayuda
+                <NavLink to="/preferences">
+                  <button
+                    title="Mis preferencias"
+                    aria-label="Mis preferencias"
+                    onClick={() => setIsMenuModalOpen(false)}
+                    className="header-buttons"
+                  >
+                    Mis preferencias
+                  </button>
                 </NavLink>
+              </li>
+
+              <li>
+                <button
+                  title="Cerrar sesión"
+                  aria-label="Cerrar sesión"
+                  onClick={() => {
+                    setIsMenuModalOpen(false);
+                    authLogoutState();
+                  }}
+                  className="login-logout-buttons"
+                >
+                  Cerrar sesión
+                </button>
               </li>
             </ul>
-
-            <button
-              title="Cerrar sesión"
-              aria-label="Cerrar sesión"
-              onClick={() => {
-                setIsMenuModalOpen(false);
-                authLogoutState();
-              }}
-              className="rounded-full border-2 border-sunnyyellow px-2 py-1 text-sm font-semibold text-sunnyyellow hover:bg-sunnyyellow hover:text-darkgray"
-            >
-              Cerrar sesión
-            </button>
           </div>
         </div>
       )}

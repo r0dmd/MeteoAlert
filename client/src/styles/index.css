@@ -98,6 +98,19 @@ Orden de procesamiento:
   }
 }
 
+@layer components {
+  /* Botones */
+  .login-logout-buttons {
+    @apply rounded-full border-2 border-sunnyyellow px-2 py-1 text-sm font-semibold text-sunnyyellow transition-transform hover:scale-105 hover:bg-sunnyyellow hover:text-darkgray;
+  }
+  .header-icons {
+    @apply rounded border-2 border-sunnyyellow text-3xl text-sunnyyellow transition-transform hover:scale-105 hover:text-whitegray;
+  }
+  .header-buttons {
+    @apply rounded-full border-2 border-sunnyyellow px-2 py-1 text-sm font-semibold text-sunnyyellow transition-transform hover:scale-105 hover:text-whitegray;
+  }
+}
+
 @layer utilities {
   .text-shadow-md {
     text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.219);
