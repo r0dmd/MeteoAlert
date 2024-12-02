@@ -16,7 +16,7 @@ const { VITE_AUTH_TOKEN } = import.meta.env;
 const AuthProvider = ({ children }) => {
   const [authLoading, setAuthLoading] = useState(true);
   const [authToken, setAuthToken] = useState(
-    localStorage.getItem(VITE_AUTH_TOKEN) || null
+    localStorage.getItem(VITE_AUTH_TOKEN) || null,
   );
   const [authUser, setAuthUser] = useState(null);
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const AuthProvider = ({ children }) => {
 
       try {
         setAuthLoading(true);
-        const user = await apiFetch('/users/profile', { authToken });
+        const { user } = await apiFetch('/users/profile', { authToken });
         setAuthUser(user);
       } catch (err) {
         console.error(err.message);

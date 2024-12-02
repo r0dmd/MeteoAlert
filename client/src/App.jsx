@@ -27,7 +27,7 @@ import { Toaster } from 'react-hot-toast';
 // Componente principal de la aplicación, actúa como base de la estructura visual. También configura elementos globales como notificaciones, contextos compartidos, y el enrutamiento principal
 const App = () => {
   return (
-    <section className="flex flex-col">
+    <section className="flex min-h-screen flex-col">
       <Toaster position="top-center" toastOptions={{ duration: 3000 }} />
       <Header />
       <ParticlesBackground />

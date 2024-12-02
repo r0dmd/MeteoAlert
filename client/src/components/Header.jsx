@@ -8,8 +8,6 @@ import { IoMenuOutline } from 'react-icons/io5';
 
 const { VITE_APP_NAME, VITE_API_UPLOADS } = import.meta.env;
 
-// @@@ PROBLEMA CON USUARIO: LoginPage.jsx:44 devuelve el usuario bien, pero authUser devuelve un objeto user con otro objeto user dentro, de manera que hay que poner authUser.user.username, por ejemplo, para acceder a él. SOLUCIONAR PARA QUE DEVUELVA EL OBJETO BIEN
-
 // ------------------------------------------
 const Header = () => {
   const authContext = useContext(AuthContext);
@@ -112,26 +110,24 @@ const Header = () => {
         /* Fondo */
         <div
           onClick={() => setIsMenuModalOpen(false)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-nightblue bg-opacity-50"
+          className="fixed inset-0 z-50 bg-nightblue bg-opacity-50"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="absolute right-7 top-10 w-fit rounded border-4 border-b-warmyellow border-l-sunnyyellow border-r-warmyellow border-t-sunnyyellow bg-nightblue p-6 shadow-lg"
+            className="absolute right-7 top-10 flex w-fit flex-col items-center rounded border-4 border-b-warmyellow border-l-sunnyyellow border-r-warmyellow border-t-sunnyyellow bg-nightblue p-6 shadow-lg"
           >
-            <ul className="flex flex-col items-center gap-4 text-sm text-whitegray">
-              <li>
-                {/* Avatar */}
-                <img
-                  src={
-                    VITE_API_UPLOADS + '/' + authUser.user.avatar ||
-                    VITE_API_UPLOADS + '/default-avatar.png'
-                  }
-                  alt="Avatar del usuario"
-                  className="h-20 w-20 rounded-full"
-                />
-              </li>
-              {/* Botones */}
+            {/* Avatar */}
+            <img
+              src={
+                VITE_API_UPLOADS + '/' + authUser.avatar ||
+                VITE_API_UPLOADS + '/default-avatar.png'
+              }
+              alt="Avatar del usuario"
+              className="avatar"
+            />
 
+            <ul className="flex flex-col items-end gap-4 text-sm text-whitegray">
+              {/* Botones */}
               {isAdmin && (
                 <li>
                   <NavLink to="/users">

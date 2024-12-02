@@ -20,7 +20,7 @@ const HomePage = () => {
         Tu portal de alertas meteorológicas
       </p>
 
-      <div className="bg-darkgray p-3 text-whitegray">
+      <div className="bg-darkgray p-3 text-whitegray opacity-85">
         <p className="my-2">
           Con{' '}
           <span className="italic underline decoration-sunnyyellow decoration-2 underline-offset-4">

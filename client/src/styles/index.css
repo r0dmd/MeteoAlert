@@ -109,6 +109,10 @@ Orden de procesamiento:
   .header-buttons {
     @apply rounded-full border-2 border-sunnyyellow px-2 py-1 text-sm font-semibold text-sunnyyellow transition-transform hover:scale-105 hover:text-whitegray;
   }
+
+  .avatar {
+    @apply mb-4 h-20 w-20 rounded-full;
+  }
 }
 
 @layer utilities {

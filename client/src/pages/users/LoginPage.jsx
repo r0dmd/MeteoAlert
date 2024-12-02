@@ -39,12 +39,9 @@ const LoginPage = () => {
       const { token } = await loginUser({ email, password });
       authLoginState(token);
 
-      // Decodificamos el token para extraer los datos del usuario.
-      const user = jwtDecode(token);
-      console.log('Usuario autenticado:', user);
-
-      // Redirigimos a la página principal.
-      toast.success(`Hola, ${user.username}`);
+      // Decodificamos el token para extraer de los datos de usuario su nombre para lanzarle un mensaje de bienvenida personalizado, y redirigimos a Inicio.
+      const username = jwtDecode(token).username;
+      toast.success(`Hola, ${username}`);
       goHome();
     } catch (err) {
       toast.error(err.message);
@@ -63,17 +60,17 @@ const LoginPage = () => {
   return (
     <form onSubmit={handleLogin}>
       <input
-        type='email'
+        type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder='Email'
+        placeholder="Email"
         required
       />
       <input
-        type='password'
+        type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        placeholder='Contraseña'
+        placeholder="Contraseña"
         required
       />
       <button disabled={loading}>Iniciar Sesión</button>
