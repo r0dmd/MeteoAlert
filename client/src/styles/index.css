@@ -107,16 +107,20 @@ Orden de procesamiento:
     @apply rounded border-2 border-sunnyyellow text-3xl text-sunnyyellow transition-transform hover:scale-105 hover:text-whitegray;
   }
   .header-buttons {
-    @apply rounded-full border-2 border-sunnyyellow px-2 py-1 text-sm font-semibold text-sunnyyellow transition-transform hover:scale-105 hover:text-whitegray;
+    @apply rounded-full px-2 py-1 text-sm font-semibold text-sunnyyellow transition-transform hover:scale-105 hover:text-whitegray;
   }
 
   .avatar {
-    @apply mb-4 h-20 w-20 rounded-full;
+    @apply shadow-extra mb-4 h-20 w-20 rounded-md;
   }
 }
 
 @layer utilities {
   .text-shadow-md {
     text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.219);
+  }
+
+  .shadow-extra {
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.425);
   }
 }

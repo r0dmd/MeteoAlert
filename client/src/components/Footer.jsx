@@ -12,10 +12,10 @@ const Footer = () => {
         <ul className="flex flex-col items-center gap-4 text-center">
           <li className="font-poppins">MeteoAlert</li>
           <NavLink title="Acerca de" to="/about">
-            <li className="">Acerca de</li>
+            <li className="flex h-8 items-center">Acerca de</li>
           </NavLink>
           <NavLink title="Política de privacidad" to="/privacy">
-            <li>Política de privacidad</li>
+            <li className="flex h-8 items-center">Política de privacidad</li>
           </NavLink>
         </ul>
 
