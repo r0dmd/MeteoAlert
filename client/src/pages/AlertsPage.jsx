@@ -1,82 +1,56 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAlerts, useDocumentTitle } from '../hooks/index.js';
 import { toast } from 'react-hot-toast';
 
+// @@@ quitar error No se encontraron alertas declaradas para este usuario, y poner un sweetalert2 de confirmación al darle a eliminar alerta
+
+// ------------------------------------------
 const AlertsPage = () => {
   useDocumentTitle('Mis alertas');
 
-  // Accede a la propiedad 'alerts' del objeto que devuelve el hook
-  const {
-    alerts: alertsData = [],
-    alertsLoading,
-    addAlert,
-    getAlerts,
-    deleteAlert,
-  } = useAlerts();
-  const [newAlert, setNewAlert] = useState('');
+  const { alerts, getAlerts, deleteAlert } = useAlerts();
 
   useEffect(() => {
     const fetchAlerts = async () => {
       try {
         await getAlerts();
-      } catch (error) {
-        toast.error('Error al obtener alertas: ' + error.message);
+      } catch (err) {
+        toast.error(err.message);
       }
     };
 
     fetchAlerts();
   }, [getAlerts]);
 
-  const handleAddAlert = async () => {
+  const handleDelete = async (alertId) => {
     try {
-      if (!newAlert.trim()) {
-        toast.error('El contenido de la alerta no puede estar vacío.');
-        return;
-      }
-      await addAlert(newAlert);
-      toast.success('¡Alerta agregada con éxito!');
-      setNewAlert('');
-    } catch (error) {
-      toast.error('Error al agregar la alerta: ' + error.message);
+      await deleteAlert(alertId);
+      toast.success('Alerta eliminada correctamente.');
+    } catch (err) {
+      toast.error(err.message);
     }
   };
 
-  const handleDeleteAlert = async (id) => {
-    try {
-      await deleteAlert(id);
-      toast.success('¡Alerta eliminada con éxito!');
-    } catch (error) {
-      toast.error('Error al eliminar la alerta: ' + error.message);
-    }
-  };
+  const alertList = alerts.alerts || []; // Garantizamos un array vacío si no hay alertas.
 
   return (
     <div>
-      <h1>Mis Alertas</h1>
-      <div>
-        <input
-          type="text"
-          value={newAlert}
-          onChange={(e) => setNewAlert(e.target.value)}
-          placeholder="Nueva alerta"
-        />
-        <button onClick={handleAddAlert}>Agregar Alerta</button>
-      </div>
-      {alertsLoading ? (
-        <p>Cargando alertas...</p>
-      ) : (
+      <h2>Historial de alertas</h2>
+      {alertList.length > 0 ? (
         <ul>
-          {Array.isArray(alertsData) &&
-            alertsData.map((alert) => (
-              <li key={alert.createdAt}>
-                <p>Tipo: {alert.type}</p>
-                <p>Valor: {alert.value}</p>
-                <button onClick={() => handleDeleteAlert(alert.createdAt)}>
-                  Eliminar
-                </button>
-              </li>
-            ))}
+          {alertList.map((alert) => (
+            <li key={alert.id}>
+              <div>
+                <h3>{alert.type}</h3>
+                <p>{`Valor: ${alert.value}`}</p>
+                <p>{`Fecha: ${new Date(alert.createdAt).toLocaleDateString()}`}</p>
+                <button onClick={() => handleDelete(alert.id)}>Eliminar</button>
+              </div>
+            </li>
+          ))}
         </ul>
+      ) : (
+        <p>No hay alertas disponibles.</p>
       )}
     </div>
   );

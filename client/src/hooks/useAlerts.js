@@ -1,41 +1,16 @@
-import { useContext, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import { AuthContext } from '../contexts/index.js';
-
 import { apiFetch } from '../api/index.js';
-
 import toast from 'react-hot-toast';
 
-// ------------------------------------------
 const useAlerts = () => {
   const { authToken } = useContext(AuthContext);
 
   const [alerts, setAlerts] = useState([]);
   const [alertsLoading, setAlertsLoading] = useState(false);
 
-  // Crear una nueva alerta meteorológica
-  const addAlert = async (alertData) => {
-    try {
-      setAlertsLoading(true);
-
-      const data = await apiFetch('/alerts/new', {
-        authToken,
-        method: 'POST',
-        body: JSON.stringify(alertData),
-      });
-
-      // Opcionalmente actualiza el estado de alertas
-      setAlerts((prevAlerts) => [...prevAlerts, data]);
-      return data;
-    } catch (err) {
-      console.error('Error al añadir alerta:', err);
-      throw err;
-    } finally {
-      setAlertsLoading(false);
-    }
-  };
-
   // Obtener todas las alertas meteorológicas
-  const getAlerts = async () => {
+  const getAlerts = useCallback(async () => {
     try {
       setAlertsLoading(true);
 
@@ -43,6 +18,7 @@ const useAlerts = () => {
         authToken,
         method: 'GET',
       });
+      console.log(data);
 
       setAlerts(data);
       return data;
@@ -52,34 +28,36 @@ const useAlerts = () => {
     } finally {
       setAlertsLoading(false);
     }
-  };
+  }, [authToken]);
 
   // Eliminar una alerta meteorológica por su ID
-  const deleteAlert = async (alertId) => {
-    try {
-      setAlertsLoading(true);
+  const deleteAlert = useCallback(
+    async (alertId) => {
+      try {
+        setAlertsLoading(true);
 
-      await apiFetch(`/alerts/${alertId}/delete`, {
-        authToken,
-        method: 'DELETE',
-      });
+        await apiFetch(`/alerts/${alertId}/delete`, {
+          authToken,
+          method: 'DELETE',
+        });
 
-      // Actualizar el estado eliminando la alerta borrada
-      setAlerts((prevAlerts) =>
-        prevAlerts.filter((alert) => alert.id !== alertId),
-      );
-    } catch (err) {
-      toast.error(err.message);
-      throw err;
-    } finally {
-      setAlertsLoading(false);
-    }
-  };
+        // Actualizar el estado eliminando la alerta borrada
+        setAlerts((prevAlerts) =>
+          prevAlerts.alerts.filter((alert) => alert.id !== alertId),
+        );
+      } catch (err) {
+        toast.error(err.message);
+        throw err;
+      } finally {
+        setAlertsLoading(false);
+      }
+    },
+    [authToken],
+  );
 
   return {
     alerts,
     alertsLoading,
-    addAlert,
     getAlerts,
     deleteAlert,
   };

@@ -6,7 +6,7 @@ const selectUserAlertsModel = async (userId) => {
     const pool = await getPool();
 
     const [alerts] = await pool.query(
-        `SELECT type, value, createdAt FROM alerts WHERE userId = ?`,
+        `SELECT id, type, value, createdAt FROM alerts WHERE userId = ?`,
         [userId],
     );
 
