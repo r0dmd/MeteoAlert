@@ -1,4 +1,5 @@
+import useAlerts from './useAlerts.js';
 import useDocumentTitle from './useDocumentTitle.js';
-import { useGoHome } from './useGoHome.js';
+import useGoHome from './useGoHome.js';
 
-export { useDocumentTitle, useGoHome };
+export { useAlerts, useDocumentTitle, useGoHome };

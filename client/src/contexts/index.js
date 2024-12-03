@@ -1,4 +1,4 @@
 import AuthContext from './authContext.js';
-import AuthProvider from './authProvider.jsx';
+import AuthProvider from './AuthProvider.jsx';
 
 export { AuthContext, AuthProvider };

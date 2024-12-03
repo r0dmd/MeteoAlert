@@ -82,26 +82,22 @@ const Header = () => {
       {/* Modales */}
       {/* Modal de Alertas */}
       {isAlertModalOpen && (
+        /* Fondo */
         <div
           onClick={() => setIsAlertModalOpen(false)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-nightblue bg-opacity-50"
+          className="fixed inset-0 z-50 bg-nightblue bg-opacity-50"
         >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="bg-white w-11/12 max-w-md rounded p-6 shadow-lg"
-          >
-            <h2 className="text-lg font-bold text-darkgray">
-              Mis Notificaciones
-            </h2>
-            <p className="text-gray-600 mt-2 text-sm">
-              Aquí aparecerán tus notificaciones de alerta.
-            </p>
-            <button
-              onClick={() => setIsAlertModalOpen(false)}
-              className="hover:bg-yellow-500 mt-4 rounded bg-sunnyyellow px-4 py-2 text-sm font-semibold text-darkgray"
+          {/* Posicionamiento */}
+          <div className="mx-auto flex w-full max-w-6xl justify-end px-6 py-12">
+            {/* Recuadro */}
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="shadow-extra flex w-fit flex-col items-center rounded border-4 border-b-warmyellow border-l-sunnyyellow border-r-warmyellow border-t-sunnyyellow bg-nightblue p-6"
             >
-              Cerrar
-            </button>
+              <p className="text-justify text-sm text-gray">
+                Aquí aparecerán tus notificaciones de alerta.
+              </p>
+            </div>
           </div>
         </div>
       )}
@@ -118,7 +114,7 @@ const Header = () => {
             {/* Recuadro */}
             <div
               onClick={(e) => e.stopPropagation()}
-              className="flex w-fit flex-col items-center rounded border-4 border-b-warmyellow border-l-sunnyyellow border-r-warmyellow border-t-sunnyyellow bg-nightblue p-6 shadow-lg"
+              className="shadow-extra flex w-fit flex-col items-center rounded border-4 border-b-warmyellow border-l-sunnyyellow border-r-warmyellow border-t-sunnyyellow bg-nightblue p-6"
             >
               {/* Avatar */}
               <img
