@@ -1,25 +1,63 @@
 import { getWeatherDataModel } from '../../models/weather/index.js';
+import { selectUserPreferencesModel } from '../../models/preferences/index.js';
+import { addAlertModel } from '../../models/alerts/index.js';
+import { selectAllUsersModel } from '../../models/users/index.js';
 
-import { generateErrorUtil } from '../../utils/index.js';
+import {
+    checkAlertThresholdUtil,
+    generateErrorUtil,
+} from '../../utils/index.js';
 
 // ------------------------------------------
-//Controlador para obtener datos meteorológicos de Open-Meteo
+// Controlador consolidado para obtener datos meteorológicos y procesar notificaciones
 const getWeatherDataController = async (req, res, next) => {
     try {
-        const { latitude, longitude } = req.query;
+        const { userId } = req.query;
 
-        if (!latitude || !longitude) {
-            generateErrorUtil(
-                'Se requieren las coordenadas de la ubicación',
-                400,
-            );
+        if (!userId) {
+            return generateErrorUtil('Se requiere el ID del usuario', 400);
         }
 
-        const weatherData = await getWeatherDataModel(latitude, longitude);
+        // Recuperar usuario y sus ubicaciones
+        const user = await selectAllUsersModel(userId);
+        if (!user) {
+            return generateErrorUtil('Usuario no encontrado', 404);
+        }
 
+        // Recuperar preferencias del usuario
+        const preferences = await selectUserPreferencesModel(userId);
+
+        const notifications = [];
+        const weatherDataForLocations = [];
+
+        // Procesar cada ubicación asociada al usuario
+        for (const location of user.locations) {
+            const weatherData = await getWeatherDataModel(
+                location.latitude,
+                location.longitude,
+            );
+
+            weatherDataForLocations.push({
+                location,
+                weatherData,
+            });
+
+            // Verificar umbrales y generar notificaciones si corresponde
+            const alerts = checkAlertThresholdUtil(weatherData, preferences);
+
+            for (const alert of alerts) {
+                await addAlertModel(userId, alert.type, alert.threshold);
+                notifications.push(alert);
+            }
+        }
+
+        // Retornar datos meteorológicos y notificaciones generadas
         res.send({
             status: 'ok',
-            data: weatherData,
+            data: {
+                weatherDataForLocations,
+                notifications,
+            },
         });
     } catch (err) {
         next(err);

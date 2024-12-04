@@ -9,7 +9,8 @@ import { checkAlertThresholdUtil, generateErrorUtil } from '../utils/index.js';
 
 // ------------------------------------------
 // Configuración del cron job para comprobar los datos meteorológicos automáticamente
-cron.schedule('0 * * * *', async () => {
+// NOTA: node-cron admite un sexto campo para segundos. Tal como está ahora es cada 30 segundos
+cron.schedule('*/30 * * * * *', async () => {
     console.log('Ejecutando verificación de umbrales de alerta...');
 
     try {

@@ -13,7 +13,6 @@ const Header = () => {
   const authContext = useContext(AuthContext);
   const { authUser, isAdmin, authLogoutState } = authContext;
 
-  const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
 
   return (
@@ -55,14 +54,15 @@ const Header = () => {
             {authUser && (
               <>
                 {/* Botón de notificaciones */}
-                <button
-                  onClick={() => setIsAlertModalOpen(true)}
-                  title="Mis notificaciones"
-                  aria-label="Mis notificaciones de alerta"
-                  className="header-icons"
-                >
-                  <AiOutlineAlert />
-                </button>
+                <NavLink to="/alerts">
+                  <button
+                    title="Mis notificaciones"
+                    aria-label="Mis notificaciones de alerta"
+                    className="header-icons"
+                  >
+                    <AiOutlineAlert />
+                  </button>
+                </NavLink>
 
                 {/* Botón de menú */}
                 <button
@@ -80,28 +80,6 @@ const Header = () => {
       </header>
 
       {/* Modales */}
-      {/* Modal de Alertas */}
-      {isAlertModalOpen && (
-        /* Fondo */
-        <div
-          onClick={() => setIsAlertModalOpen(false)}
-          className="fixed inset-0 z-50 bg-nightblue bg-opacity-50"
-        >
-          {/* Posicionamiento */}
-          <div className="mx-auto flex w-full max-w-6xl justify-end px-6 py-12">
-            {/* Recuadro */}
-            <div
-              onClick={(e) => e.stopPropagation()}
-              className="shadow-extra flex w-fit flex-col items-center rounded border-4 border-b-warmyellow border-l-sunnyyellow border-r-warmyellow border-t-sunnyyellow bg-nightblue p-6"
-            >
-              <p className="text-justify text-sm text-gray">
-                Aquí aparecerán tus notificaciones de alerta.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Modal de Menú */}
       {isMenuModalOpen && (
         /* Fondo */
