@@ -40,7 +40,7 @@ export const updateUserWithAvatar = async (authToken, userProfile) => {
   return apiFetch('/users/profile/update', {
     method: 'PUT',
     authToken,
-    headers: {}, // Eliminar el header Content-Type para permitir multipart/form-data
+    headers: {}, // NOTA: Eliminar el header Content-Type para permitir multipart/form-data
     body: formData,
   });
 };

@@ -69,7 +69,7 @@ const Header = () => {
                   onClick={() => setIsMenuModalOpen(true)}
                   title="Menú"
                   aria-label="Menú"
-                  className="header-icons relative"
+                  className="header-icons"
                 >
                   <IoMenuOutline />
                 </button>

@@ -8,9 +8,7 @@ const checkAlertThresholdUtil = (weatherData, preferences) => {
     const alerts = [];
 
     preferences.forEach((preference) => {
-        const { type, threshold, active } = preference;
-
-        if (!active) return;
+        const { type, threshold } = preference;
 
         let values;
         switch (type) {

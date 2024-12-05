@@ -54,7 +54,6 @@ const main = async () => {
                 FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
                 type ENUM('temperatura', 'precipitación', 'viento') NOT NULL,
                 threshold DECIMAL(5, 2) NOT NULL,
-                active BOOLEAN DEFAULT TRUE,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP, 
                 modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
             )

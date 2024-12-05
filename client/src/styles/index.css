@@ -104,7 +104,7 @@ Orden de procesamiento:
     @apply rounded-full border-2 border-sunnyyellow px-2 py-1 text-sm font-semibold text-sunnyyellow transition-transform hover:scale-105 hover:bg-sunnyyellow hover:text-darkgray;
   }
   .header-icons {
-    @apply rounded border-2 border-sunnyyellow text-3xl text-sunnyyellow transition-transform hover:scale-105 hover:text-whitegray;
+    @apply h-10 rounded border-2 border-sunnyyellow text-3xl text-sunnyyellow transition-transform hover:scale-105 hover:text-whitegray;
   }
   .header-buttons {
     @apply rounded-full px-2 py-1 text-sm font-semibold text-sunnyyellow transition-transform hover:scale-105 hover:text-whitegray;

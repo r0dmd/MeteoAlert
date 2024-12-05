@@ -38,10 +38,10 @@ const insertDummyData = async () => {
 
         // Insertar preferencias de alerta de prueba
         await pool.query(`
-            INSERT INTO preferences (userId, type, threshold, active) VALUES
-            (1, 'precipitación', 10.5, true),
-            (2, 'viento', 22, false),
-            (3, 'temperatura', 35, true)
+            INSERT INTO preferences (userId, type, threshold) VALUES
+            (1, 'precipitación', 10.5),
+            (2, 'viento', 22),
+            (3, 'temperatura', 35)
         `);
 
         // Insertar historial de alertas de prueba

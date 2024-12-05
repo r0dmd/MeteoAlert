@@ -6,7 +6,7 @@ const selectUserPreferencesModel = async (userId) => {
     const pool = await getPool();
 
     const [preferences] = await pool.query(
-        `SELECT type, threshold, active, createdAt FROM preferences WHERE userId = ?`,
+        `SELECT id, type, threshold, createdAt FROM preferences WHERE userId = ?`,
         [userId],
     );
 

@@ -6,7 +6,7 @@ const addPreferenceModel = async (userId, type, threshold) => {
     const pool = await getPool();
 
     const [res] = await pool.query(
-        `INSERT INTO preferences(userId, type, threshold, active) VALUES (?, ?, ?, TRUE)`,
+        `INSERT INTO preferences(userId, type, threshold) VALUES (?, ?, ?)`,
         [userId, type, threshold],
     );
 

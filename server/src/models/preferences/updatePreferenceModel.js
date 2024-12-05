@@ -12,12 +12,12 @@ const updatePreferenceModel = async (preference) => {
     const preferenceId = preference.id;
     delete preference.id;
 
-    // NOTA: Convertimos los valores booleanos a TINYINT (1 para true, 0 para false)
+    /* // NOTA: Convertimos los valores booleanos a TINYINT (1 para true, 0 para false)
     for (let key in preference) {
         if (key === 'active') {
             preference[key] = preference[key] ? 1 : 0;
         }
-    }
+    } */
 
     // Actualizamos (no hace falta 'SET modifiedAt = NOW()' porque ya el campo lo hace automáticamente en initDb)
     let sql = 'UPDATE preferences SET';

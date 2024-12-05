@@ -61,9 +61,9 @@ const AlertsPage = () => {
           {alertList.map((alert) => (
             <li
               key={alert.id}
-              className="w-full rounded-lg bg-whitegray p-2 shadow-lg transition-shadow hover:shadow-xl"
+              className="mx-auto h-fit w-fit rounded-lg bg-whitegray p-2 shadow-lg transition-shadow hover:shadow-xl"
             >
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-end gap-3">
                 <h3
                   className="text-3xl text-vibrantblue"
                   title={`${alert.type}`}
