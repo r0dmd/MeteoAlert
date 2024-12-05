@@ -1,17 +1,8 @@
-import { useContext } from 'react';
-
-import { AuthContext } from '../contexts/index.js';
-
 import { useDocumentTitle } from '../hooks/index.js';
 
 // ------------------------------------------
 const HomePage = () => {
   useDocumentTitle('Inicio');
-
-  const authContext = useContext(AuthContext);
-  const { authUser } = authContext;
-
-  console.log(authUser);
 
   return (
     <div>

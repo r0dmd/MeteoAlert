@@ -6,7 +6,7 @@ const selectUserLocationsModel = async (userId) => {
     const pool = await getPool();
 
     const [locations] = await pool.query(
-        `SELECT location FROM locations WHERE userId = ?`,
+        `SELECT * FROM locations WHERE userId = ?`,
         [userId],
     );
 

@@ -48,7 +48,7 @@ export const updateUserWithAvatar = async (authToken, userProfile) => {
 // Función para actualizar la contraseña.
 export const updatePassword = async (authToken, oldPass, newPass) => {
   return apiFetch('/users/profile/update/password', {
-    method: 'PUT',
+    method: 'PATCH',
     authToken,
     body: JSON.stringify({ oldPass, newPass }),
   });
