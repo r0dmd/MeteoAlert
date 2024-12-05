@@ -175,9 +175,7 @@ const PreferencesPage = () => {
       {selectedPreference && (
         <div className="fixed inset-0 flex items-center justify-center bg-darkgray bg-opacity-50">
           <div className="m-5 w-96 rounded-lg bg-lightgray p-6 shadow-lg">
-            <h3 className="mb-4 text-center text-sm font-bold italic">
-              Aquí puedes actualizar tu umbral personalizado
-            </h3>
+            <h3 className="mb-4 text-xl font-bold">Actualizar preferencia</h3>
             <div className="mb-4">
               <label
                 htmlFor="threshold"
@@ -188,9 +186,10 @@ const PreferencesPage = () => {
               <input
                 type="number"
                 id="threshold"
+                required
                 value={editedThreshold}
                 onChange={(e) => setEditedThreshold(e.target.value)}
-                className="w-full rounded border-gray p-2 shadow-sm focus:border-vibrantblue"
+                className="w-full rounded border border-gray p-2 shadow-sm"
               />
             </div>
             <div className="flex justify-end space-x-4">
@@ -213,13 +212,13 @@ const PreferencesPage = () => {
 
       {/* Modal para añadir preferencia */}
       {isAdding && (
-        <div className="bg-black fixed inset-0 flex items-center justify-center bg-opacity-50">
-          <div className="bg-white w-96 rounded-lg p-6 shadow-lg">
-            <h3 className="mb-4 text-xl font-bold">Añadir Preferencia</h3>
+        <div className="fixed inset-0 flex items-center justify-center bg-darkgray bg-opacity-50">
+          <div className="m-5 w-96 rounded-lg bg-lightgray p-6 shadow-lg">
+            <h3 className="mb-4 text-xl font-bold">Añadir preferencia</h3>
             <div className="mb-4">
               <label
                 htmlFor="type"
-                className="text-gray-700 block text-sm font-medium"
+                className="block text-sm font-medium text-gray"
               >
                 Tipo
               </label>
@@ -229,7 +228,7 @@ const PreferencesPage = () => {
                 onChange={(e) =>
                   setNewPreference({ ...newPreference, type: e.target.value })
                 }
-                className="border-gray-300 focus:border-blue-500 w-full rounded p-2 shadow-sm"
+                className="w-full overflow-hidden rounded border border-gray p-2 shadow-sm"
               >
                 <option value="temperatura">Temperatura</option>
                 <option value="precipitación">Precipitación</option>
@@ -239,13 +238,14 @@ const PreferencesPage = () => {
             <div className="mb-4">
               <label
                 htmlFor="threshold"
-                className="text-gray-700 block text-sm font-medium"
+                className="block text-sm font-medium text-gray"
               >
                 Umbral
               </label>
               <input
                 type="number"
                 id="threshold"
+                required
                 value={newPreference.threshold}
                 onChange={(e) =>
                   setNewPreference({
@@ -253,19 +253,19 @@ const PreferencesPage = () => {
                     threshold: e.target.value,
                   })
                 }
-                className="border-gray-300 focus:border-blue-500 w-full rounded p-2 shadow-sm"
+                className="w-full rounded border border-gray p-2 shadow-sm"
               />
             </div>
             <div className="flex justify-end space-x-4">
               <button
                 onClick={closeAddModal}
-                className="bg-gray-500 text-white hover:bg-gray-700 rounded px-4 py-2"
+                className="rounded px-4 py-2 text-darkgray hover:font-bold"
               >
                 Cancelar
               </button>
               <button
                 onClick={handleAddSubmit}
-                className="bg-green-500 text-white hover:bg-green-700 rounded px-4 py-2"
+                className="rounded px-4 py-2 text-darkgray hover:font-bold"
               >
                 Añadir
               </button>
