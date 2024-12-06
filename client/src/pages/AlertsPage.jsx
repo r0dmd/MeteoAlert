@@ -43,6 +43,7 @@ const AlertsPage = () => {
 
       if (result.isConfirmed) {
         await deleteAlert(alertId);
+        await getAlerts();
         toast.success('Alerta eliminada.');
       }
     } catch (err) {
@@ -53,7 +54,8 @@ const AlertsPage = () => {
   const handleRefresh = async () => {
     try {
       toast.loading('Actualizando alertas...', { id: 'refreshAlert' });
-      await fetchWeatherData();
+      await fetchWeatherData;
+      await getAlerts();
       toast.dismiss('refreshAlert');
       toast.success('Alertas actualizadas.');
     } catch (err) {

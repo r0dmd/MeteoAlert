@@ -7,12 +7,13 @@ import {
     checkAlertThresholdUtil,
     generateErrorUtil,
 } from '../../utils/index.js';
+import selectUserLocationsModel from '../../models/locations/selectUserLocationsModel.js';
 
 // ------------------------------------------
 // Controlador consolidado para obtener datos meteorológicos y procesar notificaciones
 const getWeatherDataController = async (req, res, next) => {
     try {
-        const { userId } = req.query;
+        const userId = req.user.id;
 
         if (!userId) {
             return generateErrorUtil('Se requiere el ID del usuario', 400);
@@ -24,14 +25,15 @@ const getWeatherDataController = async (req, res, next) => {
             return generateErrorUtil('Usuario no encontrado', 404);
         }
 
-        // Recuperar preferencias del usuario
+        // Recuperar preferencias y ubicaciones del usuario
         const preferences = await selectUserPreferencesModel(userId);
+        const locations = await selectUserLocationsModel(userId);
 
         const notifications = [];
         const weatherDataForLocations = [];
 
         // Procesar cada ubicación asociada al usuario
-        for (const location of user.locations) {
+        for (const location of locations) {
             const weatherData = await getWeatherDataModel(
                 location.latitude,
                 location.longitude,
