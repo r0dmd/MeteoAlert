@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useAlerts, useDocumentTitle } from '../hooks/index.js';
+import { useAlerts, useWeather, useDocumentTitle } from '../hooks/index.js';
 
 // Pop-ups
 import { toast } from 'react-hot-toast';
@@ -10,13 +10,12 @@ import { FaTrashCan, FaWind } from 'react-icons/fa6';
 import { BsCloudRainFill } from 'react-icons/bs';
 import { LiaThermometerThreeQuartersSolid } from 'react-icons/lia';
 
-// @@@ quitar error No se encontraron alertas declaradas para este usuario
-
 // ------------------------------------------
 const AlertsPage = () => {
   useDocumentTitle('Mis alertas');
 
   const { alerts, getAlerts, deleteAlert } = useAlerts();
+  const { fetchWeatherData } = useWeather();
 
   useEffect(() => {
     const fetchAlerts = async () => {
@@ -51,11 +50,34 @@ const AlertsPage = () => {
     }
   };
 
+  const handleRefresh = async () => {
+    try {
+      toast.loading('Actualizando alertas...', { id: 'refreshAlert' });
+      await fetchWeatherData();
+      toast.dismiss('refreshAlert');
+      toast.success('Alertas actualizadas.');
+    } catch (err) {
+      toast.dismiss('refreshAlert');
+      toast.error(err.message);
+    }
+  };
+
   const alertList = alerts.alerts || []; // Garantizamos un array vacío si no hay alertas.
 
   return (
     <div className="h-fit px-5 py-10 text-darkgray">
       <h2 className="mb-6 text-center text-3xl font-bold">Alertas</h2>
+
+      {/* Refresh Button */}
+      <div className="mb-4 flex justify-center">
+        <button
+          onClick={handleRefresh}
+          className="bg-blue text-white rounded-md px-4 py-2 transition-all hover:scale-105 hover:bg-vibrantblue"
+        >
+          Refrescar Alertas
+        </button>
+      </div>
+
       {alertList.length > 0 ? (
         <ul className="max-w-xl space-y-4">
           {alertList.map((alert) => (
