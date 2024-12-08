@@ -64,30 +64,25 @@ const AlertsPage = () => {
     }
   };
 
-  const alertList = alerts.alerts || []; // Garantizamos un array vacío si no hay alertas.
+  // Garantizamos un array vacío si no hay alertas.
+  const alertList = alerts.alerts || [];
 
   return (
-    <div className="h-fit px-5 py-10 text-darkgray">
+    <div className="container-main text-darkgray">
       <h2 className="mb-6 text-center text-3xl font-bold">Alertas</h2>
 
       {/* Refresh Button */}
       <div className="mb-4 flex justify-center">
-        <button
-          onClick={handleRefresh}
-          className="bg-blue text-white rounded-md px-4 py-2 transition-all hover:scale-105 hover:bg-vibrantblue"
-        >
+        <button onClick={handleRefresh} className="btn-refresh">
           Refrescar Alertas
         </button>
       </div>
 
       {alertList.length > 0 ? (
-        <ul className="max-w-xl space-y-4">
+        <ul className="space-y-4">
           {alertList.map((alert) => (
-            <li
-              key={alert.id}
-              className="mx-auto h-fit w-fit rounded-lg bg-whitegray p-2 shadow-lg transition-shadow hover:shadow-xl"
-            >
-              <div className="flex items-center justify-end gap-3">
+            <li key={alert.id} className="alert-item">
+              <div className="flex items-center justify-between gap-3">
                 <h3
                   className="text-3xl text-vibrantblue"
                   title={`${alert.type}`}
@@ -101,14 +96,14 @@ const AlertsPage = () => {
                     <LiaThermometerThreeQuartersSolid />
                   )}
                 </h3>
-                <p className="font-montserrat text-lg font-semibold italic text-darkgray">
+                <p className="alert-text">
                   {alert.type === 'precipitación'
                     ? `${alert.value}mm`
                     : alert.type === 'viento'
                       ? `${alert.value}km/h`
                       : `${alert.value}ºC`}
                 </p>
-                <p className="text-gray">
+                <p className="alert-timestamp">
                   {new Date(alert.createdAt).toLocaleString('es-ES', {
                     hour: '2-digit',
                     minute: '2-digit',

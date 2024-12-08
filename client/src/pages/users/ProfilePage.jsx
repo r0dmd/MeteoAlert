@@ -1,20 +1,15 @@
 import { useDocumentTitle } from '../../hooks/index.js';
-
 import { useState, useEffect, useContext } from 'react';
 import { toast } from 'react-hot-toast';
-
-// Servicios de usuario
 import {
   updateUser,
   updateUserWithAvatar,
   updatePassword,
 } from '../../api/index.js';
-
 import { AuthContext } from '../../contexts/index.js';
 
 const { VITE_API_UPLOADS } = import.meta.env;
 
-// ------------------------------------------
 const UserProfilePage = () => {
   useDocumentTitle('Mi perfil');
 
@@ -103,12 +98,12 @@ const UserProfilePage = () => {
   };
 
   return (
-    <div className="h-fit px-5 py-10 text-darkgray">
+    <div className="container mx-auto flex flex-col items-center px-4 py-10">
       <h2 className="mb-6 text-center text-3xl font-bold">Perfil de Usuario</h2>
 
       {/* Información de perfil */}
       <div className="mb-6">
-        <h3 className="text-xl font-bold">Información de Perfil</h3>
+        <h3 className="text-center text-xl font-bold">Información de Perfil</h3>
         <div className="space-y-4">
           <div>
             <label htmlFor="username" className="block text-sm font-medium">
@@ -121,7 +116,7 @@ const UserProfilePage = () => {
               value={profile.username}
               onChange={handleInputChange}
               disabled={!isEditing}
-              className="w-full rounded border p-2 shadow-sm"
+              className="input-field"
             />
           </div>
 
@@ -136,22 +131,16 @@ const UserProfilePage = () => {
               value={profile.email}
               onChange={handleInputChange}
               disabled={!isEditing}
-              className="w-full rounded border p-2 shadow-sm"
+              className="input-field"
             />
           </div>
         </div>
         {isEditing ? (
-          <button
-            onClick={handleProfileUpdate}
-            className="text-white mt-4 rounded bg-skyblue px-4 py-2 transition-all hover:bg-vibrantblue"
-          >
+          <button onClick={handleProfileUpdate} className="btn-save">
             Guardar Cambios
           </button>
         ) : (
-          <button
-            onClick={() => setIsEditing(true)}
-            className="mt-4 rounded bg-gray px-4 py-2 text-darkgray transition-all hover:font-bold"
-          >
+          <button onClick={() => setIsEditing(true)} className="btn-edit">
             Editar Perfil
           </button>
         )}
@@ -159,7 +148,7 @@ const UserProfilePage = () => {
 
       {/* Avatar */}
       <div className="mb-6">
-        <h3 className="text-xl font-bold">Avatar</h3>
+        <h3 className="text-center text-xl font-bold">Avatar</h3>
         <div className="flex items-center space-x-4">
           {profile.avatar ? (
             <img
@@ -178,14 +167,14 @@ const UserProfilePage = () => {
             accept="image/*"
             onChange={handleAvatarUpload}
             disabled={isUploadingAvatar}
-            className="block w-full rounded border p-2 shadow-sm"
+            className="input-field"
           />
         </div>
       </div>
 
       {/* Datos adicionales */}
       <div className="mb-6">
-        <h3 className="text-xl font-bold">Datos Adicionales</h3>
+        <h3 className="text-center text-xl font-bold">Datos Adicionales</h3>
         <p>
           <strong>Rol:</strong> {authUser?.role || 'N/A'}
         </p>
@@ -199,7 +188,7 @@ const UserProfilePage = () => {
 
       {/* Cambio de contraseña */}
       <div>
-        <h3 className="text-xl font-bold">Cambio de Contraseña</h3>
+        <h3 className="text-center text-xl font-bold">Cambio de Contraseña</h3>
         <div className="space-y-4">
           <div>
             <label htmlFor="oldPass" className="block text-sm font-medium">
@@ -211,7 +200,7 @@ const UserProfilePage = () => {
               type="password"
               value={passwords.oldPass}
               onChange={handlePasswordChange}
-              className="w-full rounded border p-2 shadow-sm"
+              className="input-field"
             />
           </div>
           <div>
@@ -224,14 +213,11 @@ const UserProfilePage = () => {
               type="password"
               value={passwords.newPass}
               onChange={handlePasswordChange}
-              className="w-full rounded border p-2 shadow-sm"
+              className="input-field"
             />
           </div>
         </div>
-        <button
-          onClick={handlePasswordUpdate}
-          className="text-white mt-4 rounded bg-red px-4 py-2 transition-all hover:bg-warmyellow"
-        >
+        <button onClick={handlePasswordUpdate} className="btn-change-password">
           Cambiar Contraseña
         </button>
       </div>

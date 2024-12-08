@@ -5,6 +5,8 @@ import {
   updatePassword,
   updateUser,
   updateUserWithAvatar,
+  getAllUsers,
+  deleteUser,
 } from './auth.js';
 
 export {
@@ -15,4 +17,6 @@ export {
   updatePassword,
   updateUser,
   updateUserWithAvatar,
+  getAllUsers,
+  deleteUser,
 };

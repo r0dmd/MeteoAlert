@@ -58,23 +58,37 @@ const LoginPage = () => {
   }
 
   return (
-    <form onSubmit={handleLogin}>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-        required
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Contraseña"
-        required
-      />
-      <button disabled={loading}>Iniciar Sesión</button>
-    </form>
+    <div className="login-form-container">
+      <form onSubmit={handleLogin} className="login-form">
+        <h2 className="mb-6 text-center text-2xl text-whitegray">
+          Iniciar sesión
+        </h2>
+
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          required
+          className="login-input"
+        />
+
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Contraseña"
+          required
+          className="login-input"
+        />
+
+        <button type="submit" disabled={loading} className="login-button">
+          {loading ? 'Cargando...' : 'Iniciar sesión'}
+        </button>
+
+        {loading && <p className="loading-text">Por favor, espere...</p>}
+      </form>
+    </div>
   );
 };
 

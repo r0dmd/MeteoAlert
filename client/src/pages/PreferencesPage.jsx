@@ -126,7 +126,7 @@ const PreferencesPage = () => {
           {preferencesList.map((preference) => (
             <li
               key={preference.id}
-              className="h-fit w-full rounded-lg bg-whitegray p-2 shadow-lg transition-shadow hover:shadow-xl"
+              className="h-fit w-full rounded-lg bg-whitegray p-4 shadow-lg transition-shadow hover:shadow-xl"
             >
               <div className="flex items-center justify-between">
                 <h3
@@ -149,18 +149,20 @@ const PreferencesPage = () => {
                       ? `${preference.threshold}km/h`
                       : `${preference.threshold}ºC`}
                 </p>
-                <button
-                  onClick={() => openEditModal(preference)}
-                  className="h-8 rounded-md bg-skyblue px-2 text-sm text-darkgray transition-all hover:scale-105 hover:bg-vibrantblue hover:text-whitegray"
-                >
-                  Editar
-                </button>
-                <button
-                  onClick={() => handleDelete(preference.id)}
-                  className="rounded-md bg-red p-2 text-whitegray transition-all hover:scale-105 hover:bg-warmyellow"
-                >
-                  <FaTrashCan />
-                </button>
+                <div className="flex space-x-2">
+                  <button
+                    onClick={() => openEditModal(preference)}
+                    className="h-8 rounded-md bg-skyblue px-3 text-sm text-darkgray transition-all hover:scale-105 hover:bg-vibrantblue hover:text-whitegray"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    onClick={() => handleDelete(preference.id)}
+                    className="rounded-md bg-red p-2 text-whitegray transition-all hover:scale-105 hover:bg-warmyellow"
+                  >
+                    <FaTrashCan />
+                  </button>
+                </div>
               </div>
             </li>
           ))}

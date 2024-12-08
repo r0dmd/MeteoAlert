@@ -113,6 +113,121 @@ Orden de procesamiento:
   .avatar {
     @apply shadow-extra mb-4 h-20 w-20 rounded-md;
   }
+  /* Clase para el contenedor principal */
+  .container-main {
+    @apply p-4 sm:p-6 lg:p-8;
+  }
+
+  /* Clase para el texto de bienvenida */
+  .welcome-text {
+    @apply text-shadow-md mx-auto my-8 w-full rounded border border-whitegray p-3 text-center font-poppins text-xl font-semibold shadow-md sm:w-4/5 sm:text-2xl md:w-3/4 lg:w-2/3 lg:text-3xl xl:w-1/2;
+  }
+
+  /* Clase para el contenedor de alertas */
+  .alert-container {
+    @apply rounded-lg bg-darkgray p-4 text-whitegray opacity-85 sm:p-6 lg:p-8;
+  }
+
+  /* Clase para el texto de lista */
+  .list-text {
+    @apply my-2 ml-5 text-sm sm:text-base;
+  }
+
+  /* Clase para el texto en el párrafo */
+  .description-text {
+    @apply my-4 text-base sm:text-lg lg:text-xl;
+  }
+
+  /* Estilo para los botones principales */
+  .btn-refresh {
+    @apply rounded-md bg-green px-6 py-3 text-whitegray transition-all hover:scale-105 hover:bg-vibrantblue;
+  }
+
+  /* Estilo para las alertas */
+  .alert-item {
+    @apply mx-auto w-full rounded-lg bg-whitegray p-4 shadow-lg transition-shadow hover:shadow-xl sm:w-11/12 md:w-9/12 lg:w-8/12 xl:w-1/2;
+  }
+
+  /* Estilo del texto de alerta */
+  .alert-text {
+    @apply font-montserrat text-lg font-semibold italic text-darkgray;
+  }
+
+  /* Estilo para los textos pequeños */
+  .alert-timestamp {
+    @apply text-gray;
+  }
+
+  .btn-auth {
+    @apply rounded-full border-2 border-sunnyyellow px-4 py-2 text-sm font-semibold text-sunnyyellow transition-transform hover:scale-105 hover:bg-sunnyyellow hover:text-darkgray;
+  }
+
+  /* Para el modal y el contenedor de menú */
+  .modal-bg {
+    @apply fixed inset-0 z-50 bg-nightblue bg-opacity-50;
+  }
+
+  .menu-modal {
+    @apply mx-auto flex w-full max-w-6xl justify-end px-6 py-12;
+  }
+
+  .menu-container {
+    @apply shadow-extra flex w-fit flex-col items-center rounded border-4 border-b-warmyellow border-l-sunnyyellow border-r-warmyellow border-t-sunnyyellow bg-nightblue p-6;
+  }
+
+  .menu-item-btn {
+    @apply my-4 text-sm text-whitegray;
+  }
+
+  /* Estilo para el contenedor del formulario de login */
+  .login-form-container {
+    @apply flex min-h-screen flex-col items-center justify-center bg-darkgray px-6 py-12;
+  }
+
+  /* Estilo para el formulario */
+  .login-form {
+    @apply w-full max-w-md rounded-lg border-4 border-sunnyyellow bg-nightblue p-8 shadow-xl;
+  }
+
+  /* Estilo para los campos de entrada */
+  .login-input {
+    @apply mb-4 w-full rounded-lg border-2 border-sunnyyellow bg-whitegray p-3 text-darkgray focus:outline-none focus:ring-2 focus:ring-sunnyyellow;
+  }
+
+  /* Estilo para el botón de login */
+  .login-button {
+    @apply mt-4 w-full rounded-lg bg-sunnyyellow p-3 font-semibold text-darkgray transition-transform hover:scale-105 hover:bg-vibrantblue hover:text-whitegray;
+  }
+
+  /* Estilo para el texto de carga */
+  .loading-text {
+    @apply mt-4 text-center text-whitegray;
+  }
+
+  /* Clase para inputs con borde personalizado */
+  .input-field {
+    @apply w-full max-w-lg rounded border-2 border-sunnyyellow p-2 shadow-sm;
+  }
+
+  /* Botón para guardar cambios */
+  .btn-save {
+    @apply mt-4 rounded bg-green px-4 py-2 text-whitegray transition-all hover:bg-vibrantblue;
+  }
+
+  /* Botón para editar perfil */
+  .btn-edit {
+    @apply mt-4 rounded bg-gray px-4 py-2 text-whitegray transition-all hover:font-bold;
+  }
+
+  /* Botón para cambiar contraseña */
+  .btn-change-password {
+    @apply mt-4 rounded bg-red px-4 py-2 text-whitegray transition-all hover:bg-warmyellow;
+  }
+
+  /* Clase para el contenedor principal */
+  .container {
+    @apply mx-auto px-4 py-10;
+  }
 }
 
 @layer utilities {

@@ -53,3 +53,19 @@ export const updatePassword = async (authToken, oldPass, newPass) => {
     body: JSON.stringify({ oldPass, newPass }),
   });
 };
+
+// Función para obtener todos los usuarios (requiere autenticación de administrador).
+export const getAllUsers = async (authToken) => {
+  return apiFetch('/users', {
+    method: 'GET',
+    authToken,
+  });
+};
+
+// Función para eliminar un usuario (requiere autenticación de administrador).
+export const deleteUser = async (authToken, userId) => {
+  return apiFetch(`/users/${userId}/delete`, {
+    method: 'DELETE',
+    authToken,
+  });
+};

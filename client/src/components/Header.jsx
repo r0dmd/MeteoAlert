@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../contexts/index.js';
 import { AiOutlineAlert } from 'react-icons/ai';
 import { IoMenuOutline } from 'react-icons/io5';
+import { FaSignInAlt, FaUserPlus } from 'react-icons/fa'; // Importamos los íconos de inicio de sesión y registrarse
 
 const { VITE_APP_NAME, VITE_API_UPLOADS } = import.meta.env;
 
@@ -39,19 +40,54 @@ const Header = () => {
 
           {/* BOTONES */}
           <nav className="flex gap-x-5">
-            {!authUser && (
-              <NavLink to="/login">
-                <button
-                  title="Iniciar sesión"
-                  aria-label="Iniciar sesión"
-                  className="login-logout-buttons"
-                >
-                  Iniciar sesión
-                </button>
-              </NavLink>
-            )}
+            {!authUser ? (
+              <>
+                {/* Botón Iniciar sesión - ícono en pantallas pequeñas */}
+                <NavLink to="/login" className="sm:hidden">
+                  <button
+                    title="Iniciar sesión"
+                    aria-label="Iniciar sesión"
+                    className="login-logout-buttons text-xl"
+                  >
+                    <FaSignInAlt />
+                  </button>
+                </NavLink>
 
-            {authUser && (
+                {/* Botón Registrarse - ícono en pantallas pequeñas */}
+                <NavLink to="/register" className="sm:hidden">
+                  <button
+                    title="Registrarse"
+                    aria-label="Registrarse"
+                    className="login-logout-buttons text-xl"
+                  >
+                    <FaUserPlus />
+                  </button>
+                </NavLink>
+
+                {/* Texto en pantallas grandes */}
+                <div className="hidden gap-3 sm:flex">
+                  <NavLink to="/login">
+                    <button
+                      title="Iniciar sesión"
+                      aria-label="Iniciar sesión"
+                      className="login-logout-buttons"
+                    >
+                      Iniciar sesión
+                    </button>
+                  </NavLink>
+
+                  <NavLink to="/register">
+                    <button
+                      title="Registrarse"
+                      aria-label="Registrarse"
+                      className="login-logout-buttons"
+                    >
+                      Registrarse
+                    </button>
+                  </NavLink>
+                </div>
+              </>
+            ) : (
               <>
                 {/* Botón de notificaciones */}
                 <NavLink to="/alerts">
