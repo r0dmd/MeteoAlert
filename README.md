@@ -4,7 +4,7 @@ MeteoAlert es un proyecto desarrollado con **Node.js** y **Express** para el bac
 
 Se trata de una aplicación web de alertas meteorológicas que le ofrece a los usuarios registrados alertas personalizadas y en tiempo real a partir de la información de la API [*Open-Meteo*](https://open-meteo.com/). 
 
-Se incluyet también en la carpeta raíz del proyecto una colección de **Postman** ya dispuesta con la que se pueden probar los endpoints directamente una vez el servidor se esté ejecutando.
+Se incluye también en la carpeta raíz del proyecto una colección de **Postman** ya dispuesta con la que se pueden probar los endpoints directamente una vez el servidor se esté ejecutando.
 
 ## Requisitos
 
