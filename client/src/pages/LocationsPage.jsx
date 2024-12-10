@@ -182,7 +182,7 @@ const LocationsPage = () => {
   const locationsList = locations.locations || [];
 
   return (
-    <div className="h-fit px-5 py-10 text-darkgray">
+    <div className="flex h-fit flex-col items-center justify-center px-5 py-10 text-darkgray">
       <h2 className="mb-6 text-center text-3xl font-bold">Ubicaciones</h2>
       <button
         title="Añadir ubicación"
@@ -192,11 +192,11 @@ const LocationsPage = () => {
         Añadir ubicación
       </button>
       {locationsList.length > 0 ? (
-        <ul className="max-w-xl space-y-4">
+        <ul className="flex w-fit max-w-xl flex-col items-center justify-center space-y-4 align-middle">
           {locationsList.map((location) => (
             <li
               key={location.id}
-              className="h-fit w-full rounded-lg bg-whitegray p-2 shadow-lg transition-shadow hover:shadow-xl"
+              className="flex h-fit w-full flex-col items-center justify-center rounded-lg bg-whitegray p-4 shadow-lg transition-shadow hover:shadow-xl"
             >
               <div className="flex flex-col">
                 <h3
@@ -210,7 +210,7 @@ const LocationsPage = () => {
                 </p>
                 <p className="text-sm text-darkgray">{location.description}</p>
               </div>
-              <div className="mt-2 flex justify-between">
+              <div className="mt-2 flex justify-between gap-2">
                 <button
                   onClick={() => openEditModal(location)}
                   className="h-8 rounded-md bg-skyblue px-2 text-sm text-darkgray transition-all hover:scale-105 hover:bg-vibrantblue hover:text-whitegray"

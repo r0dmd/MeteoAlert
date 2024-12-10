@@ -1,7 +1,14 @@
 import { NavLink } from 'react-router-dom';
 
 // React icons
-import { FaYoutube, FaTwitter, FaInstagram, FaFacebook } from 'react-icons/fa';
+import {
+  FaYoutube,
+  FaTwitter,
+  FaInstagram,
+  FaFacebook,
+  FaLinkedin,
+  FaGithub,
+} from 'react-icons/fa';
 
 // ------------------------------------------
 const Footer = () => {
@@ -58,9 +65,27 @@ const Footer = () => {
           </div>
         </ul>
       </div>
-      <p className="grow p-2 text-center font-montserrat text-sm italic">
-        r0dmd &copy; 2024
-      </p>
+      <div className="flex items-center justify-center gap-4 p-2 text-center font-montserrat text-sm italic">
+        <p>r0dmd &copy; 2024</p>
+        <a
+          href="https://www.linkedin.com/in/rodrigo-md/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          className="transition-transform hover:scale-110"
+        >
+          <FaLinkedin className="h-5 w-5 text-sunnyyellow hover:text-whitegray" />
+        </a>
+        <a
+          href="https://github.com/r0dmd"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          className="transition-transform hover:scale-110"
+        >
+          <FaGithub className="h-5 w-5 text-sunnyyellow hover:text-whitegray" />
+        </a>
+      </div>
     </footer>
   );
 };

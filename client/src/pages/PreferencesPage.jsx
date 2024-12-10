@@ -112,7 +112,7 @@ const PreferencesPage = () => {
   const preferencesList = preferences.preferences || []; // Garantizar un array vacío si no hay preferencias
 
   return (
-    <div className="h-fit px-5 py-10 text-darkgray">
+    <div className="flex h-fit flex-col items-center justify-center px-5 py-10 text-darkgray">
       <h2 className="mb-6 text-center text-3xl font-bold">Preferencias</h2>
       <button
         title="Añadir preferencia"
@@ -122,13 +122,13 @@ const PreferencesPage = () => {
         Añadir preferencia
       </button>
       {preferencesList.length > 0 ? (
-        <ul className="max-w-xl space-y-4">
+        <ul className="flex max-w-xl flex-col space-y-4">
           {preferencesList.map((preference) => (
             <li
               key={preference.id}
               className="h-fit w-full rounded-lg bg-whitegray p-4 shadow-lg transition-shadow hover:shadow-xl"
             >
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-10">
                 <h3
                   className="text-3xl text-vibrantblue"
                   title={`${preference.type}`}
