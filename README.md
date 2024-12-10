@@ -46,19 +46,7 @@ cd client
 npm install
 ```
 
-## Ejecución
-
-1. En la carpeta **server**:
-
-```
-npm run dev
-```
-
-2. En la carpeta **client**:
-
-```
-npm run dev
-```
+4. En la carpeta **server**, genera un archivo `.env`, y basándote en el contenido del archivo `.env.example`, rellena los campos con los datos del entorno de ejecución particular. Luego, haz lo mismo en **client**, pero generando un archivo `.env.local` y a partir del `.env.local.example` (solo cambian los nombres de los archivos).
 
 ## Inicialización de la Base de Datos
 
@@ -68,10 +56,24 @@ Para inicializar la base de datos, ejecuta el siguiente comando en la carpeta **
 npm run initdb
 ```
 
-Si deseas agregar datos de prueba a la base de datos, puedes ejecutar:
+Si deseas agregar datos de prueba a la base de datos, y de paso arrancar automáticamente el servidor, puedes ejecutar:
 
 ```
 npm run initdummydb
+```
+
+## Ejecución
+
+1. En la carpeta **server**, si no se ha ejecutado `npm run initdummydb` en el paso anterior:
+
+```
+npm run dev
+```
+
+2. En la carpeta **client**:
+
+```
+npm run dev
 ```
 
 ## Endpoints
